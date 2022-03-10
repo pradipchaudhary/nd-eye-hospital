@@ -9,6 +9,7 @@ use App\Http\Controllers\DirectorsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Models\Services;
 
@@ -70,6 +71,12 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::delete('/director/delete/{id}',[DirectorsController::class, 'delete'])->name('delete-director');
 
     // Team Member
+    Route::get('/team',[TeamController::class, 'index'])->name('team');
+    Route::get('/team/create',[TeamController::class, 'create'])->name('add-team');
+    Route::post('/team/create',[TeamController::class, 'store'])->name('add-team');
+    Route::get('/team/edit/{id}',[TeamController::class, 'edit'])->name('edit-team');
+    Route::put('/team/edit/{id}',[TeamController::class, 'update'])->name('update-team');
+    Route::delete('/team/delete/{id}',[TeamController::class, 'delete'])->name('delete-team');
 
 
 

@@ -13,5 +13,7 @@ class Directors extends Model
         'name',
         'position',
         'image',
+        'description',
+
     ];
 }

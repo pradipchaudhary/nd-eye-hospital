@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model
+class Doctors extends Model
 {
     use HasFactory;
-    protected $table = 'teams';
+    protected $table = 'doctors';
     protected $fillable=[
         'name',
-        'position',
         'image',
+        'education',
+        'specialization',
         'description',
-        'fb_url',
-        'tw_url',
-        'in_url',
+        'professional_experience',
+        'expertise',
+        'experience',
     ];
 }

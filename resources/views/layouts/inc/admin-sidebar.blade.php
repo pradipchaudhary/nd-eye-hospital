@@ -37,7 +37,7 @@
                         <li><a href="{{ route('director') }}">Board of directors </a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="">Team </a></li>
+                        <li><a href="{{ route('team') }}">Team </a></li>
                     </ul>
                 </li>
 
