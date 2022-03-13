@@ -51,8 +51,9 @@
                         <div class="form-group">
                             <label> Description</label>
                             <div>
-                                <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter  Description" value="" />
+
+
+                                    <textarea name="description" required class="form-control" rows="5"></textarea>
                             </div>
                         </div>
 

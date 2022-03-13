@@ -53,6 +53,13 @@ class DirectorsController extends Controller
         return view('admin.director.edit', compact('director'));
     }
     public function update(Request $request, $id){
+
+        $validate= $request->validate([
+            'name'=>'required',
+            'position'=>'required',
+
+
+        ]);
         $director = Directors::find($id);
         $director->name = $request->input('name');
         $director->position = $request->input('position');

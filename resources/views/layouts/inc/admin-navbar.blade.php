@@ -99,7 +99,7 @@
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#" target="_blank"><i
+                    <a class="dropdown-item" href="{{ url('/') }}" target="_blank"><i
                             class="bx bx-link-external font-size-16 align-middle mr-1"></i>
                         View Site</a>
                     <div class="dropdown-divider"></div>

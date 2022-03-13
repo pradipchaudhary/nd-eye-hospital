@@ -49,7 +49,13 @@
         </div>
         <!-- end main content-->
     </div>
-
+    {{-- <script>
+        ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+        console.error( error );
+        } );
+        </script> --}}
 <!-- JAVASCRIPT -->
 <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -59,6 +65,9 @@
 <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <!-- Datatable init js -->
 <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+
+{{-- CK Editor --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 
 <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>

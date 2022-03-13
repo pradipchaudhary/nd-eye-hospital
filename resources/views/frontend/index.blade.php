@@ -1,217 +1,161 @@
 
 @section('title', 'Home | Navadristi Eye Hospital, Ithari')
+@section('home','active')
 @include('inc.header')
 @include('inc.nav')
 
 {{-- content start  --}}
 <!-- ============ hero  =========== -->
-<div id="hero">
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="{{ asset('images/banner01.jpg') }}"
+{{-- banner --}}
+<section id="banner">
+    <div class="owl-carousel banner owl-theme">
+        @foreach ($slider as $item)
+
+        <div class="item">
+            <img
+            src="{{ asset('uploads/slider/'. $item->image ) }}"
             class="d-block w-100"
             alt="..."
-          />
+            />
         </div>
-        <div class="carousel-item">
-          <img
-            src="{{ asset('images/banner02.jpg') }}"
-            class="d-block w-100"
-            alt="..."
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            src="{{ asset('images/banner03.jpg') }}"
-            class="d-block w-100"
-            alt="..."
-          />
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        @endforeach
+
     </div>
-  </div>
+</section>
+
 
   <!-- about section -->
   <section id="about__section">
     <div class="mycontainer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 col-md-7 col-sm-12">
-            <div class="about">
-              <h4>Specilities & Treatment</h4>
-              <h1>How can we <span> Help you ?</span></h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-                dicta accusantium autem doloribus,Lorem ipsum dolor sit amet.
-              </p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Debitis tempore beatae suscipit error! Porro, temporibus!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-                reiciendis.
-              </p>
-            </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+           <div class="about_img">
+             <img src="{{ asset('images/logo.jpg') }}" alt="">
+           </div>
           </div>
-          <div class="col-lg-5 col-md-5 col-sm-12">
-            <div class="quick_book">
-              <h4>Book within minutes</h4>
-              <h1>Our Location</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                ullam, labore minima temporibus accusantium perspiciatis!
-              </p>
-              <div class="custom-select">
-                <select>
-                  <option value="0">Select Location :</option>
-                  <option value="1">Location One</option>
-                  <option value="2">Location Two</option>
-                  <option value="2">Location three</option>
-                </select>
+          <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="about_des">
+              <h2> Welcome </h2>
+              <h6 class="mb-3"> Nava Dristi Eye Hospital </h6>
+              <div class="des">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis provident quasi ad deserunt a obcaecati hic quibusdam vitae debitis voluptates.
+                </p>
+                <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis veniam labore quos illo, eaque ullam voluptatum ipsum cumque adipisci, ex sint provident optio? Earum nostrum quo recusandae. Odio, accusantium deserunt!</p>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis provident quasi ad deserunt a obcaecati hic quibusdam vitae debitis voluptates.
+                </p>
               </div>
-            </div>
+              <div class="cat mt-4">
+                <a href="{{ url('/about') }}"> <span> Read more  </span> <i class="fa-solid fa-arrow-right"></i> </a>
+              </div>
           </div>
+            </div>
+          
         </div>
       </div>
     </div>
   </section>
 
+
+  {{-- Message from Chair Man Section --}}
+  <section id="message_from">
+      <div class="container">
+        <div class="message_from">
+          <div class="message_detail">
+            <div class="message_from_img">
+              <img src="{{ asset('images/profile.png') }}" alt="">
+            </div>
+            <div class="message_from_detail">
+              <h4 class="name"> Dr. Bijaya Gautam </h4>
+              <p> Founder & Executive Director </p>
+              <button class="message_from_cat" data-bs-toggle="modal"
+                data-bs-target="#exampleModal99">
+                <span> View More </span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            </div>
+          </div>
+          <div class="">
+            {{-- <button class="message_from_cat" data-bs-toggle="modal"
+                data-bs-target="#exampleModal99">
+                View More
+            </button> --}}
+
+            {{-- Model  --}}
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal99" tabindex="-1"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h6> Message from the chairman  </h6>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body pb-4">
+                          <div class="message_from_popup">
+                              <div class="row">
+                                <div class="col-md-4 left_box">
+                                  <div class="imgbox">
+                                    <img src="{{ asset('images/profile.png') }}" alt="">
+                                  </div>
+                                </div>
+                                <div class="col-md-8 right_box">
+                                  <h4> Dr. Bijaya Gautam  </h4>
+                                  <div class="message_from_position">Founder & Executive Director </div>
+                                  <p class="mt-4 pr-4">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab corrupti explicabo, voluptate quia aperiam perspiciatis. Esse reprehenderit dolorem nemo? Praesentium hic laborum ullam et in, quae non eos quaerat minima.
+
+                                  </p>
+                                
+                                </div>
+                              </div>
+                              
+                             
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {{-- end pop --}}
+          </div>
+        </div>
+      </div>
+    
+
+  </section>
+
   <!-- === Service Section === -->
   <section id="services">
     <div class="container">
-      <h1 class="">Our <span> Services </span></h1>
+      <h1 class="">Our <span> Specilities  </span></h1>
       <div class="owl-carousel services owl-theme pt-4">
+
+        @foreach ($specialities as $item )
         <div class="item">
-          <div class="service">
-            <div class="service_item">
-              <div class="imgBox">
-                <img src="{{ asset('images/icon.png') }}" alt="" />
+            <div class="service">
+              <div class="service_item">
+                <div class="imgBox">
+                  @if($item->icon)
+                    <img src="{{ asset('uploads/specialities/'.$item->icon) }}" alt="Images" />
+                  @else
+                      <img src="{{ asset('images/default.png') }}" />
+                  @endif
+
+                </div>
+                <h2>{{ $item->name }}</h2>
+                <p class="limit-description">
+                {{ $item->description }}
+                </p>
+                <a href="route({{ $item->id }})"> Read More <i class="fa-solid fa-arrow-right"></i></a>
               </div>
-              <h2>Cornea</h2>
-              <p>
-              v  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Earum, dolorem.
-              </p>
-              <a href="#"> Read More</a>
             </div>
           </div>
-        </div>
-        <div class="item">
-          <div class="service">
-            <div class="service_item">
-              <div class="imgBox">
-                <img src="{{ asset('images/icon.png') }}" alt="" />
-              </div>
-              <h2>Cornea</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Earum, dolorem.
-              </p>
-              <a href="#"> Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="service">
-            <div class="service_item">
-              <div class="imgBox">
-                <img src="{{ asset('images/icon.png') }}" alt="" />
-              </div>
-              <h2>Cornea</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Earum, dolorem.
-              </p>
-              <a href="#"> Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="service">
-            <div class="service_item">
-              <div class="imgBox">
-                <img src="{{ asset('images/icon.png') }}" alt="" />
-              </div>
-              <h2>Cornea</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Earum, dolorem.
-              </p>
-              <a href="#"> Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="service">
-            <div class="service_item">
-              <div class="imgBox">
-                <img src="{{ asset('images/icon.png') }}" alt="" />
-              </div>
-              <h2>Cornea</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Earum, dolorem.
-              </p>
-              <a href="#"> Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="service">
-            <div class="service_item">
-              <div class="imgBox">
-                <img src="{{ asset('images/icon.png') }}" alt="" />
-              </div>
-              <h2>Cornea</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Earum, dolorem.
-              </p>
-              <a href="#"> Read More</a>
-            </div>
-          </div>
-        </div>
+
+        @endforeach
+
+
       </div>
     </div>
   </section>
@@ -219,202 +163,108 @@
   <!-- Book Appointment -->
   <section class="book_appointment">
     <div class="container appointment_info">
-      <h1>24*7 EYECARE HELPLINE</h1>
+      <h1>24*7 Eyecare Helpline </h1>
       <div class="phone-n">
         025-581381 <span> 24 Hours Emergency Services</span>
       </div>
     </div>
   </section>
 
-  <!-- News and Events   -->
-  <section class="carousel_se_02 news__events">
-    <div class="container-fluid py-5">
+  
+    <!-- News and Events   -->
+    <section class="carousel_se_02 news__events">
+      <div class="container-fluid py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center wow fadeInUp">
+              <h2>News & Events</h2>
+            </div>
+            <div class="col-md-12 px-4 pt-0">
+              <div class="owl-carousel news_events owl-theme">
+                <!-- 01 -->
+                @foreach ($news as $item)
+
+                <div class="item">
+                  <div class="col-sm-12 wow fadeInUp delay-1">
+                    <div class="">
+                      <div class="news-img hover15">
+                        <img
+                        src="{{ asset('uploads/news/'.$item->image) }}"
+                          class="img-fluid pic-1"
+                        />
+                      </div>
+                      <div class="inner_info">
+                        <h1>
+                          <a href="{{ route('news-detail',$item->id) }}">
+                          <span class="limit-title">  {{ $item->title }} </span>
+                          </a>
+
+                        </h1>
+                        <span class="date"> {{ $item->created_at }}</span>
+                        <p class="limit-description">
+                          {{ $item->description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+
+
+                <!-- 01 -->
+
+              </div>
+            </div>
+          <div class="view_all text-center">
+              <a href="{{ route('news-event') }}"> View all News </a>
+          </div>
+          </div>
+
+          <!-- our clients -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== Testimonials ====== -->
+    <div id="testimonials">
       <div class="container">
+        <h1>Patients<span> Say About Us </span></h1>
         <div class="row">
-          <div class="col-sm-12 text-center wow fadeInUp">
-            <h2>News & Events</h2>
-          </div>
-          <div class="col-md-12 px-4 pt-0">
-            <div class="owl-carousel news_events owl-theme">
-              <!-- 01 -->
-              <div class="item">
-                <div class="col-sm-12 wow fadeInUp delay-1">
-                  <div class="">
-                    <div class="news-img hover15">
+          <div class="col-md-12">
+            <div id="testimonial-slider" class="owl-carousel">
+              <!--  ////////////////////////////////////////////////////////  -->
+              @foreach ($testimonial as $item)
+              <div
+                  class="testimonial-item equal-height style-6"
+                  style="height: 254px"
+              >
+                  <div class="test_info">
+                  <div class="testimonial-image cell-left">
                       <img
-                        src="https://picsum.photos/id/1012/300/250"
-                        class="img-fluid pic-1"
-                      />
-                    </div>
-                    <div class="inner_info">
-                      <h1>
-                        <a href="#">
-                          The Workshop On Cataract Quality Improvement
-                          Intensive Project
-                        </a>
-                      </h1>
-                      <span class="date"> Feb 17the 2020</span>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Accusamus ea dolor, libero illo est sed. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit.
-                        Nisi, laboriosam?
-                      </p>
-                    </div>
+                        src="{{ asset('uploads/testimonial/'.$item->image) }}"
+                          class="img-fluid pic-1"
+                        />
                   </div>
-                </div>
-              </div>
-
-              <!-- 01 -->
-              <div class="item">
-                <div class="col-sm-12 wow fadeInUp delay-1">
-                  <div class="">
-                    <div class="news-img hover15">
-                      <img
-                        src="https://picsum.photos/id/1012/300/250"
-                        class="img-fluid pic-1"
-                      />
-                    </div>
-                    <div class="inner_info">
-                      <h1>
-                        <a href="#">
-                          The Workshop On Cataract Quality Improvement
-                          Intensive Project
-                        </a>
-                      </h1>
-                      <span class="date"> Feb 17the 2020</span>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Accusamus ea dolor, libero illo est sed. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit.
-                        Nisi, laboriosam?
-                      </p>
-                    </div>
+                  <div class="cell-right">
+                      <div class="testimonial-name">{{ $item->name }}</div>
+                      <div class="testimonial-job">{{ $item->position }}</div>
                   </div>
-                </div>
-              </div>
-
-              <!-- 01 -->
-              <div class="item">
-                <div class="col-sm-12 wow fadeInUp delay-1">
-                  <div class="">
-                    <div class="news-img hover15">
-                      <img
-                        src="https://picsum.photos/id/1012/300/250"
-                        class="img-fluid pic-1"
-                      />
-                    </div>
-                    <div class="inner_info">
-                      <h1>
-                        <a href="#">
-                          The Workshop On Cataract Quality Improvement
-                          Intensive Project
-                        </a>
-                      </h1>
-                      <span class="date"> Feb 17the 2020</span>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Accusamus ea dolor, libero illo est sed. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit.
-                        Nisi, laboriosam?
-                      </p>
-                    </div>
                   </div>
-                </div>
+                  <div class="testimonial-content quote">
+                  <i class="fa fa-quote-left"> </i>
+                      {{ $item->description }}
+                  </div>
               </div>
-            </div>
-          </div>
-        </div>
+              @endforeach
 
-        <!-- our clients -->
-      </div>
-    </div>
-  </section>
 
-  <!-- ==== Testimonials ====== -->
-  <div id="testimonials">
-    <div class="container">
-      <h1>Patients<span> Say About Us </span></h1>
-      <div class="row">
-        <div class="col-md-12">
-          <div id="testimonial-slider" class="owl-carousel">
-            <!--  ////////////////////////////////////////////////////////  -->
-            <div
-              class="testimonial-item equal-height style-6"
-              style="height: 254px"
-            >
-              <div class="test_info">
-                <div class="testimonial-image cell-left">
-                  <img
-                    src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    alt="Rose"
-                  />
-                </div>
-                <div class="cell-right">
-                  <div class="testimonial-name">Pradip Chaudhary</div>
-                  <div class="testimonial-job">Web Developer</div>
-                </div>
-              </div>
-              <div class="testimonial-content quote">
-                <i class="fa fa-quote-left"> </i>This is a short bio about
-                rose. This is a short bio about rose. This is a short bio
-                about rose. This is a short bio about rose. This is a short
-                bio about rose.
-              </div>
-            </div>
-            <!--  ////////////////////////////////////////////////////////  -->
-            <div
-              class="testimonial-item equal-height style-6"
-              style="height: 254px"
-            >
-              <div class="test_info">
-                <div class="testimonial-image cell-left">
-                  <img
-                    src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    alt="Rose"
-                  />
-                </div>
-                <div class="cell-right">
-                  <div class="testimonial-name">Bidhan Baniya</div>
-                  <div class="testimonial-job">Laravel Developer</div>
-                </div>
-              </div>
-              <div class="testimonial-content quote">
-                <i class="fa fa-quote-left"> </i>This is a short bio about
-                rose. This is a short bio about rose. This is a short bio
-                about rose. This is a short bio about rose. This is a short
-                bio about rose.
-              </div>
-            </div>
-            <!--  ////////////////////////////////////////////////////////  -->
-            <div
-              class="testimonial-item equal-height style-6"
-              style="height: 254px"
-            >
-              <div class="test_info">
-                <div class="testimonial-image cell-left">
-                  <img
-                    src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    alt="Rose"
-                  />
-                </div>
-                <div class="cell-right">
-                  <div class="testimonial-name">Rose</div>
-                  <div class="testimonial-job">Gardener</div>
-                </div>
-              </div>
-              <div class="testimonial-content quote">
-                <i class="fa fa-quote-left"> </i>This is a short bio about
-                rose. This is a short bio about rose. This is a short bio
-                about rose. This is a short bio about rose. This is a short
-                bio about rose.
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-{{-- end content  --}}
+  {{-- end content  --}}
+
 
 @include('inc.footer')

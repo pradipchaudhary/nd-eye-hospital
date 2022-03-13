@@ -78,7 +78,7 @@ class ServiceController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/slider/', $filename);
+            $file->move('uploads/service/', $filename);
             $service->image = $filename;
         }
         $service->update();

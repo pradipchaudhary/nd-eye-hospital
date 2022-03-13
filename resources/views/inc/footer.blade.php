@@ -5,7 +5,7 @@
             <div class="col-md-4 col-lg-4 footer">
               <h4>About Us</h4>
               <div class="footer_body">
-                <p>
+                <p class="limit-description">
                   Nava Dristi Eye Hospital was established with the aim of
                   providing quality treatment at an affordable price to the
                   patients of province #1. It also aims at developing a favorable
@@ -59,11 +59,12 @@
         </div>
       </div>
 
-      <!-- Script Include -->
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-      <script src="{{ asset('js/jquery.min.js') }}"></script>
-      <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-      <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Script Include -->
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     </body>
   </html>

@@ -52,8 +52,8 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="{{ $news->description }}" />
+                                <textarea name="description" required class="form-control" rows="5"> {{ $news->description }} </textarea>
+
                             </div>
                         </div>
 

@@ -42,22 +42,23 @@
                     <form class="custom-validation" action="{{ route('add-service') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Service Title</label>
+                            <label> Title</label>
                             <div>
                                 <input type="text" name="title" class="form-control" required
                                 placeholder="Enter Slider Title" value=" " />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Service Description</label>
+                            <label> Description</label>
                             <div>
-                                <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="" />
+                                {{-- <input type="text" name="description" class="form-control" required
+                                    placeholder="Enter Slider Description" value="" /> --}}
+                                    <textarea name="description" id="" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="resume">Service Image</label>
+                            <label for="resume"> Image</label>
                             <input type="file" name="image" class="form-control-file" id="notice-img">
                         </div>
 

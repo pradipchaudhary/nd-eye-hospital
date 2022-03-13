@@ -42,7 +42,7 @@
                     <form class="custom-validation" action="{{ route('add-testimonial') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Name</label>
                             <div>
                                 <input type="text" name="name" class="form-control" required
                                 placeholder="Enter Slider Title" value=" " />
@@ -52,14 +52,15 @@
                             <label>Position </label>
                             <div>
                                 <input type="text" name="position" class="form-control" required
-                                    placeholder="Enter Slider Description" value="" />
+                                    placeholder="" value="" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="" />
+                                {{-- <input type="text" name="description" class="form-control" required
+                                    placeholder="Enter Slider Description" value="" /> --}}
+                                    <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
                             </div>
                         </div>
 

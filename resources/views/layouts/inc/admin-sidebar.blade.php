@@ -15,29 +15,35 @@
                 </li>
                 <li class="menu-title">Information</li>
                 <li><a href="{{ route('slider') }}" class="waves-effect">
-                        <i class="bx bx-book"></i> <span> Slider </span></a>
+                    <i class='bx bx-images'></i> <span> Banners </span></a>
                 </li>
 
                 <li><a href="{{ route('service') }}" class="waves-effect">
-                    <i class="bx bx-book"></i> <span> Services </span></a>
+                    <i class='bx bx-hash'></i> <span> Services </span></a>
+                </li>
+                <li><a href="{{ route('specialities') }}" class="waves-effect">
+                    <i class='bx bx-hash'></i> <span> Specialities </span></a>
                 </li>
 
                 <li><a href="{{ route('news') }}" class="waves-effect">
-                    <i class="bx bx-book"></i> <span> News & Event </span></a>
+                    <i class='bx bx-news' ></i> <span> News & Event </span></a>
                 </li>
                 <li><a href="{{ route('testimonial') }}" class="waves-effect">
-                    <i class="bx bx-book"></i> <span> Testimonial </span></a>
+                    <i class='bx bx-message-dots' ></i> <span> Testimonial </span></a>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-list-ul"></i>
-                        <span> Member </span>
+                        <i class='bx bx-buildings'></i>
+                        <span>Hospital Members </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('director') }}">Board of directors </a></li>
+                        <li><a href="{{ route('director') }}"> <i class='bx bx-hash' ></i> <span> Board of Directors</span> </a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('team') }}">Team </a></li>
+                        <li><a href="{{ route('team') }}"> <i class='bx bx-sitemap' ></i> <span> Team Members</span> </a></li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('doctor') }}"> <i class='bx bx-plus-medical'></i> <span> Doctors </span> </a></li>
                     </ul>
                 </li>
 
