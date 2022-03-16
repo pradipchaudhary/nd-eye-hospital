@@ -61,13 +61,13 @@
                             <label> Specialization </label>
                             <div>
                                 <input type="text" name="specialization" class="form-control" required
-                                    placeholder="Enter Specialization " value="{{ $doctor->education }}" />
+                                    placeholder="Enter Specialization " value="{{ $doctor->specialization }}" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <textarea name="description" required class="form-control" rows="5">
+                                <textarea id="summernote1" name="description" required class="form-control" rows="5">
                                     {{ $doctor->description }}
                                 </textarea>
                             </div>
@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <label>Professional Experience</label>
                             <div>
-                                <textarea name="professional_experience" required class="form-control" rows="5">
+                                <textarea id="summernote2" name="professional_experience" required class="form-control" rows="5">
                                     {{ $doctor->professional_experience }}
                                 </textarea>
                             </div>
@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label>Expertise</label>
                             <div>
-                                <textarea name="expertise" required class="form-control" rows="5">
+                                <textarea id="summernote3" name="expertise" required class="form-control" rows="5">
                                     {{ $doctor->expertise }}
                                 </textarea>
                             </div>

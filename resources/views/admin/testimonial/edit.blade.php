@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'Edit Testimonail ')
 @section('content')
 
 <div class="container-fluid">
@@ -59,9 +59,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                {{-- <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="" /> --}}
-                                    <textarea name="description" class="form-control" id="" cols="30" rows="10">
+                                    <textarea name="description" id="summernote1" class="form-control" id="" cols="30" rows="10">
                                         {{ $testimonial->description }}
                                     </textarea>
                             </div>

@@ -17,6 +17,8 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    {{-- Include Summernote CSS --}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- App Css-->
     <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 </head>
@@ -67,8 +69,27 @@
 <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
 {{-- CK Editor --}}
-<script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
+{{-- <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script> --}}
+{{-- Summernote JS --}}
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script src="{{ asset('assets/js/app.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote1').summernote({
+            height: 180,
+        });
+    });
+    $(document).ready(function() {
+        $('#summernote2').summernote({
+            height: 180,
+        });
+    });
+    $(document).ready(function() {
+        $('#summernote3').summernote({
+            height: 180,
+        });
+    });
+</script>
 </body>
 </html>

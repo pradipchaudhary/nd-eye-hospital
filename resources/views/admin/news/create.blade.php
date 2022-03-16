@@ -53,7 +53,7 @@
                             <div>
 
 
-                                    <textarea name="description" required class="form-control" rows="5"></textarea>
+                                    <textarea name="description" id="summernote1" required class="form-control" rows="5"></textarea>
                             </div>
                         </div>
 

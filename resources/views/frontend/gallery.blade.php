@@ -17,16 +17,35 @@
         </div>
         <h1 class="sec_page_title">Gallery</h1>
       </div>
-    </div>
+    </div>  
     <!-- second page body -->
     <div class="sec_page_body py-5">
-      <div class="container">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat
-          adipisci sapiente laudantium alias voluptatibus. Minus eius
-          voluptates sapiente beatae illum quasi perspiciatis possimus, amet
-          quis temporibus ea illo eligendi voluptate?
-        </p>
+      <div class="container gallery_container">
+        <div class="row">
+          {{-- gallery item --}}
+          @foreach ($gallery as $item)
+            
+          <div class="col-md-4 text-center">
+            <div class="gallery_item">
+              <div class="gallery_img_box">
+                <a href="{{ route('sub-gallery',$item->id) }}" class="features_image">
+                  @foreach ($item->programPhotos as $value)
+                  <img src="{{ asset('uploads/gallery/'.$value->image) }}" alt="">
+                  @break
+                  @endforeach
+                  
+                </a>
+              </div>
+              <h5> {{ $item->title }} </h5>
+            <p> {{ count($item->programPhotos) }} Photos</p>
+            </div>
+            
+          </div> 
+          {{-- // end gallery  --}}
+          @endforeach
+
+          
+        </div>
       </div>
     </div>
   </section>

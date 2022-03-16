@@ -47,8 +47,8 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <p class="text-muted font-weight-medium">Notice</p>
-                                    <h4 class="mb-0">1,235</h4>
+                                    <p class="text-muted font-weight-medium">Service</p>
+                                    <h4 class="mb-0">{{ $totalService }}</h4>
                                 </div>
 
                                 <div

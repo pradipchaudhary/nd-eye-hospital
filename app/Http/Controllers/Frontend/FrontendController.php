@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\Directors;
 use App\Models\Doctors;
 use App\Models\HomeSlider;
+use App\Models\MailInfo;
+use App\Models\Message;
 use App\Models\News;
+use App\Models\Program;
 use App\Models\Services;
 use App\Models\Specialities;
 use App\Models\Team;
 use App\Models\Testimonial;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -21,8 +27,9 @@ class FrontendController extends Controller
         $service = Services::query()->get();
         $testimonial = Testimonial::query()->get();
         $specialities = Specialities::query()->get();
+        $message = Message::query()->get();
         $news = News::query()->get();
-        return view('frontend.index', ['slider' => $slider, 'service' => $service, 'news' => $news, 'testimonial' => $testimonial, 'specialities' => $specialities]);
+        return view('frontend.index', ['slider' => $slider, 'service' => $service, 'news' => $news, 'testimonial' => $testimonial, 'specialities' => $specialities, 'message' => $message]);
     }
     //News  
     public function news()
@@ -84,12 +91,46 @@ class FrontendController extends Controller
     // Appointment
     public function gallery()
     {
-        return view('frontend.gallery');
+        $gallery = Program::query()->with('programPhotos')->get();
+
+        return view('frontend.gallery', compact('gallery'));
+    }
+
+    public function subGallery($id)
+    {
+        $gallery = Program::query()->where('id', $id)->with('programPhotos')->first();
+
+        return view('frontend.sub-gallery', compact('gallery'));
     }
 
     // Contact 
     public function contact()
     {
         return view('frontend.contact');
+    }
+
+    public function contactEmail(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'number' => 'required',
+            'email' => 'required',
+            'city' => 'required',
+            'message' => 'required',
+        ]);
+        // dd($data['email']);
+        $email = MailInfo::first();
+        try {
+            Mail::to($email->email)->send(new ContactMail($data));
+            return redirect()->back();
+        } catch (Exception $ex) {
+            // Debug via $ex->getMessage();
+            if (Mail::failures()) {
+                return response()->Fail('Sorry! Please try again latter');
+            } else {
+                // return response()->success('Great! Successfully send in your mail');
+            }
+        }
+        return redirect()->back();
     }
 }

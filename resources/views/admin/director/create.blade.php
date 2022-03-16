@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'Add Board Member')
 @section('content')
 
 <div class="container-fluid">
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <textarea name="description" required class="form-control" rows="5"></textarea>
+                                <textarea id="summernote1" name="description" required class="form-control" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

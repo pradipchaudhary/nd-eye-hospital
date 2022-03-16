@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'Add Slider ')
 @section('content')
 
 <div class="container-fluid">
@@ -44,20 +44,21 @@
                         <div class="form-group">
                             <label>Title</label>
                             <div>
-                                <input type="text" name="title" class="form-control" required
-                                placeholder="Enter Slider Title" value=" " />
+                                {{-- <input type="text" name="title" class="form-control" 
+                                placeholder="Enter Slider Title" value=" " required /> --}}
+                                <input type="text" name="title" class="form-control" placeholder="Enter Title" value="" required >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
+                            <label>Body Content</label>
                             <div>
-                                <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="" />
+                                <textarea id="summernote1" name="description"  class="form-control" id="" cols="30" rows="10"></textarea>
+                                
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="resume"> Image</label>
+                            <label for="resume">Slider Image</label>
                             <input type="file" name="image" class="form-control-file" id="notice-img">
                         </div>
 

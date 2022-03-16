@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'Add Service')
 @section('content')
 
 <div class="container-fluid">
@@ -44,8 +44,9 @@
                         <div class="form-group">
                             <label> Title</label>
                             <div>
-                                <input type="text" name="title" class="form-control" required
-                                placeholder="Enter Slider Title" value=" " />
+                                {{-- <input type="text" name="title" class="form-control" required
+                                placeholder="Enter Slider Title" value=" " /> --}}
+                                <input type="text" name="title" class="form-control" placeholder="Title" value="" required />
                             </div>
                         </div>
                         <div class="form-group">
@@ -53,7 +54,7 @@
                             <div>
                                 {{-- <input type="text" name="description" class="form-control" required
                                     placeholder="Enter Slider Description" value="" /> --}}
-                                    <textarea name="description" id="" rows="10" class="form-control"></textarea>
+                                    <textarea name="description" id="summernote1" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
 

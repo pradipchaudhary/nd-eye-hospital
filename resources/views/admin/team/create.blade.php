@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'View Team Member')
 @section('content')
 
 <div class="container-fluid">
@@ -36,7 +36,7 @@
                     <div class="text-sm-right">
                         <a href="{{ route('team') }}" type="button"
                             class="btn btn-primary btn-rounded waves-effect waves-light mb-2 mr-2"><i
-                                class="bx bx-arrow-back mr-1"></i> View </a>
+                                class="bx bx-arrow-back mr-1"></i> View Team Member</a>
                     </div>
 
                     <form class="custom-validation" action="{{ route('add-team') }}" method="POST" enctype="multipart/form-data">
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <textarea name="description" required class="form-control" rows="5"></textarea>
+                                <textarea id="summernote1" name="description" required class="form-control" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

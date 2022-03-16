@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                    <textarea required class="form-control" name="description" rows="5">
+                                    <textarea required class="form-control" id="summernote1" name="description" rows="5">
                                         {{ $specialities->description }}
                                     </textarea>
                             </div>
@@ -62,7 +62,7 @@
                             <label> Symptoms</label>
                             <div>
                                 
-                                    <textarea name="symptoms" id="" rows="10" class="form-control">
+                                    <textarea name="symptoms" id="summernote2" rows="10" class="form-control">
                                         {{ $specialities->symptoms }}
                                     </textarea>
                             </div>
@@ -71,7 +71,7 @@
                             <label> Treatment Option </label>
                             <div>
                                 
-                                    <textarea name="treatment_options" id="" rows="10" class="form-control">
+                                    <textarea name="treatment_options" id="summernote3" rows="10" class="form-control">
                                         {{ $specialities->treatment_options }}
                                     </textarea>
                             </div>

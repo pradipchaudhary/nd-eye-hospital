@@ -40,7 +40,13 @@
             experienced our case. We want to hear from you !!
           </p>
           <div class="mt-4">
-            <form action="">
+            @if (session('status'))
+            <h6 class="alert alert-success">
+                {{ session('status') }}
+            </h6>
+            @endif
+            <form action="{{ route('contact-us') }}" method="POST">
+              @csrf
               <div class="form-row row">
                 <div class="col-md-5 mb-3">
                   <label for="validationDefault01">Full name </label>
@@ -48,6 +54,7 @@
                     type="text"
                     class="form-control"
                     id="validationDefault01"
+                    name="name"
                     placeholder="Full name"
                     value=""
                     required
@@ -59,6 +66,7 @@
                     type="text"
                     class="form-control"
                     id="validationDefault02"
+                    name="number"
                     placeholder="Contact Number"
                     value=""
                     required
@@ -66,12 +74,13 @@
                 </div>
 
                 <div class="col-md-5 mb-3">
-                  <label for="validationDefault02">State </label>
+                  <label for="validationDefault02">Email </label>
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
+                    name="email"
                     id="validationDefault02"
-                    placeholder="State"
+                    placeholder="email"
                     value=""
                     required
                   />
@@ -81,6 +90,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="city"
                     id="validationDefault02"
                     placeholder="City "
                     value=""
@@ -90,7 +100,7 @@
                 <div class="col-md-10 mb-3">
                   <label for="validationDefault02">Message </label>
                   <textarea
-                    name=""
+                    name="message"
                     class="form-control"
                     id=""
                     cols="30"

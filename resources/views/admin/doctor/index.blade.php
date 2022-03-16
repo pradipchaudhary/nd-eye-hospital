@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'View Doctor List ')
 @section('content')
 
 <div class="container-fluid">
@@ -41,16 +41,10 @@
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th>S.No.</th>
+                                <th class="w-5">S.No.</th>
                                 <th> Doctor Name </th>
-                                <th> education </th>
-                                <th>specialization</th>
-                                <th>description</th>
-                                <th>professional_experience</th>
-                                <th>expertise</th>
-                                <th>experience</th>
-                                <th>image</th>
-                                <th>action</th>
+                               
+                                <th class="w-15">action</th>
                             </tr>
                         </thead>
 
@@ -62,32 +56,103 @@
                             <tr>
                                 <td> {{  $count++ }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->education }}</td>
-                                <td>{{ $item->specialization }}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->professional_experience }}</td>
-                                <td>{{ $item->expertise }}</td>
-                                <td>{{ $item->experience }}</td>
-                                <td><img src="{{ asset('uploads/doctor/'.$item->image) }}" width="40px" height="40px" alt="Image"></td>
-                                <td>
-                                        <a href="{{ route('edit-doctor', $item->id) }}" class="mr-3 text-primary"
-                                            data-toggle="tooltip" data-placement="top" title=""
-                                            data-original-title="Edit">
-                                            <i class="mdi mdi-pencil font-size-18"></i>
-                                        </a>
-
-
-                                    <form action="{{ route('delete-doctor', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button>
-                                        <i class="mdi mdi-trash-can font-size-18"></i>
-
+                                
+                                <td class="d-flex">
+                                    {{-- view btn --}}
+                                    <button type="button" class=" btn-success btn-sm mr-2  waves-effect waves-light" data-toggle="modal" data-target=".exampleModal{{  $item->id }}">
+                                        <i class='bx bxs-show' ></i>
                                     </button>
-
+                                    {{-- edit btn --}}
+                                    <button class="d-btn btn-primary  mr-2">
+                                        <a href="{{ route('edit-doctor', $item->id) }}" class="text-light"
+                                        data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Edit"><i
+                                            class="mdi mdi-pencil font-size-18"></i></a>
+                                    </button>
+                                    {{-- Delete btn --}}
+                                    <form class="" action="{{ route('delete-doctor', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn-danger d-btn">
+                                            <i class="mdi mdi-trash-can font-size-18"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
+                            <!-- Modal -->
+                            <div class="modal fade exampleModal{{  $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Doctor Information</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body view-info">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <ul class="notice-list notice-info-list">
+                                                                            <li class="col-md-12">
+                                                                                <strong> Name : </strong>
+                                                                                <span>{{ $item->name }}</span>
+                                                                            </li>
+                                                                           
+                                                                            <li class="col-md-12">
+                                                                                <strong>Education : </strong> <br /> <span> {!! $item->education !!}</span>
+                                                                            </li>
+                                                                            <li class="col-md-12">
+                                                                                <strong>Specialization : </strong> <br /> <span> {!! $item->specialization !!}</span>
+                                                                            </li>
+                                                                            <li class="col-md-12">
+                                                                                <strong>Description : </strong> <br /> <span> {!! $item->description !!}</span>
+                                                                            </li>
+                                                                            <li class="col-md-12">
+                                                                                <strong>Professional Experience : </strong> <br /> <span> {!! $item->professional_experience !!}</span>
+                                                                            </li>
+                                                                            <li class="col-md-12">
+                                                                                <strong>Expertise : </strong> <br /> <span> {!! $item->expertise !!}</span>
+                                                                            </li>
+                                                                            <li class="col-md-12">
+                                                                                <strong>Experience  : </strong> <br /> <span> {!! $item->experience !!}</span>
+                                                                            </li>
+                                                                           
+                                                                           
+                                                                            <li class="col-md-12">
+                                                                                <strong>Images : </strong> <br /> <span>
+                                                                                    @if ($item->image)
+                                                                                    <img class="w-30" src="{{ asset('uploads/doctor/'.$item->image) }}"
+                                                                                    alt="Specialities image" /> </span>
+                                                                                    @else
+                                                                                    <div class="text-danger mt-2">No Image</div>
+                                                                                    @endif
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-print-none">
+                                                            <div class="float-right">
+                                                                <a href="#" class="btn btn-danger w-md waves-effect waves-light"
+                                                                    data-dismiss="modal">Close</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end modal --}}
                             @endforeach
 
                         </tbody>

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Edit Service')
+@section('title', 'Edit News & Event')
 @section('content')
 
 <div class="container-fluid">
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <textarea name="description" required class="form-control" rows="5"> {{ $news->description }} </textarea>
+                                <textarea name="description" id="summernote1" required class="form-control" rows="5"> {{ $news->description }} </textarea>
 
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="resume"> Image</label>
                             <input type="file" name="image" class="form-control-file" id="notice-img">
-                            <img src="{{ asset('uploads/news/'.$news->image) }}" width="200px" alt="">
+                            <img src="{{ asset('uploads/news/'.$news->image) }}"  class="w-15" alt="">
                         </div>
 
                         <div class="form-group mb-0">

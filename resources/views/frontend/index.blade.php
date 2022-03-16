@@ -62,65 +62,71 @@
   {{-- Message from Chair Man Section --}}
   <section id="message_from">
       <div class="container">
-        <div class="message_from">
-          <div class="message_detail">
-            <div class="message_from_img">
-              <img src="{{ asset('images/profile.png') }}" alt="">
-            </div>
-            <div class="message_from_detail">
-              <h4 class="name"> Dr. Bijaya Gautam </h4>
-              <p> Founder & Executive Director </p>
-              <button class="message_from_cat" data-bs-toggle="modal"
-                data-bs-target="#exampleModal99">
-                <span> View More </span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            </div>
+       @foreach ($message as $item)
+       <div class="message_from">
+        <div class="message_detail">
+          <div class="message_from_img">
+            @if($item->photo)
+              <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
+            @else
+                <img src="{{ asset('images/default.png') }}" />
+            @endif
           </div>
-          <div class="">
-            {{-- <button class="message_from_cat" data-bs-toggle="modal"
-                data-bs-target="#exampleModal99">
-                View More
-            </button> --}}
-
-            {{-- Model  --}}
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal99" tabindex="-1"
-              aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-xl">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                        <h6> Message from the chairman  </h6>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal"
-                              aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body pb-4">
-                          <div class="message_from_popup">
-                              <div class="row">
-                                <div class="col-md-4 left_box">
-                                  <div class="imgbox">
-                                    <img src="{{ asset('images/profile.png') }}" alt="">
-                                  </div>
-                                </div>
-                                <div class="col-md-8 right_box">
-                                  <h4> Dr. Bijaya Gautam  </h4>
-                                  <div class="message_from_position">Founder & Executive Director </div>
-                                  <p class="mt-4 pr-4">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab corrupti explicabo, voluptate quia aperiam perspiciatis. Esse reprehenderit dolorem nemo? Praesentium hic laborum ullam et in, quae non eos quaerat minima.
-
-                                  </p>
-                                
-                                </div>
-                              </div>
-                              
-                             
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          {{-- end pop --}}
+          <div class="message_from_detail">
+            <h4 class="name"> {{ $item->name }} </h4>
+            <p> {{ $item->position }} </p>
+            <button class="message_from_cat" data-bs-toggle="modal"
+              data-bs-target="#exampleModal99">
+              <span> View More </span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
           </div>
         </div>
+        <div class="">
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal99" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h6> Message from the {{ $item->position }}  </h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pb-4">
+                        <div class="message_from_popup">
+                            <div class="row">
+                              <div class="col-md-4 left_box">
+                                <div class="imgbox">
+                                  @if($item->photo)
+                                    <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
+                                  @else
+                                      <img src="{{ asset('images/default.png') }}" />
+                                  @endif
+                                  {{-- <img src="{{ asset('images/profile.png') }}" alt=""> --}}
+                                </div>
+                              </div>
+                              <div class="col-md-8 right_box">
+                                <h4> {{  $item->name }}  </h4>
+                                <div class="message_from_position"> {{ $item->position }} </div>
+                                <p class="mt-4 pr-4">
+                                 {{-- {{ $item->message }} --}}
+                                  {!!  $item->message !!}
+                                </p>
+                              
+                              </div>
+                            </div>
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- end pop --}}
+        </div>
+      </div>
+       @endforeach
       </div>
     
 
@@ -148,7 +154,7 @@
                 <p class="limit-description">
                 {{ $item->description }}
                 </p>
-                <a href="route({{ $item->id }})"> Read More <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="{{ route('specialities-detail',$item->id) }}"> Read More <i class="fa-solid fa-arrow-right"></i></a>
               </div>
             </div>
           </div>

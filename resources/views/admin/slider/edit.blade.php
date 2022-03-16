@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'Edit Slider ')
 @section('content')
 
 <div class="container-fluid">
@@ -50,15 +50,18 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
+                            <label>Body Content</label>
                             <div>
-                                <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="{{ $slider->description }}" />
+                                <textarea id="summernote1" name="description" class="form-control" id="" cols="30" rows="10" >
+                                    {{ $slider->description }}
+                                </textarea>
+                                {{-- <input type="text" name="description" class="form-control" required
+                                    placeholder="Enter Slider Description" value="{{ $slider->description }}" /> --}}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="resume"> Image</label>
+                            <label for="resume">Slider Image</label>
                             <input type="file" name="image" class="form-control-file" id="notice-img">
                             <img src="{{ asset('uploads/slider/'.$slider->image) }}" width="200px" alt="">
                         </div>

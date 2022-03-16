@@ -52,9 +52,8 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                {{-- <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="{{ $service->description }}" /> --}}
-                                    <textarea required class="form-control" name="description" rows="5">
+                                
+                                    <textarea required class="form-control" id="summernote1" name="description" rows="5">
                                         {{ $service->description }}
                                     </textarea>
                             </div>

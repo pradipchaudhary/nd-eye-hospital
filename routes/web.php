@@ -5,9 +5,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\DirectorsController;
 use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessageFromController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecialitiesController;
@@ -19,8 +23,17 @@ use App\Models\Services;
 
 Auth::routes();
 
+
+Route::get('/emailCheck', [HomeController::class, 'emailCheck'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontendController::class, 'index']);
+
+// About
+Route::get('about', [FrontendController::class, 'about'])->name('about');
+
+// Message from
+// Route::get('message', [FrontendController::class, 'message'])->name('');
+// Route::get('/news/{id}', [FrontendController::class, 'newsDetail'])->name('news-detail');
 
 // News
 Route::get('news', [FrontendController::class, 'news'])->name('news-event');
@@ -31,8 +44,7 @@ Route::get('/news/{id}', [FrontendController::class, 'newsDetail'])->name('news-
 Route::get('specialities', [FrontendController::class, 'specialities'])->name('specialities');
 Route::get('/specialities/{id}', [FrontendController::class, 'specialitiesDetail'])->name('specialities-detail');
 
-// About
-Route::get('about', [FrontendController::class, 'about'])->name('about');
+
 
 // Doctor Route
 Route::get('doctors', [FrontendController::class, 'doctors'])->name('doctors');
@@ -44,12 +56,18 @@ Route::get('/appointment', [FrontendController::class, 'appointment'])->name('ap
 
 // Contact Us
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::post('/contactEmail', [FrontendController::class, 'contactEmail'])->name('contact-us');
 Route::get('/careers', [FrontendController::class, 'careers'])->name('careers');
 Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
+Route::get('/subgallery/{id}', [FrontendController::class, 'subGallery'])->name('sub-gallery');
+
 
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    // About Info
+    
 
     // slider
     Route::get('/slider', [SliderController::class, 'index'])->name('slider');
@@ -117,4 +135,22 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/doctor/edit/{id}', [DoctorsController::class, 'edit'])->name('edit-doctor');
     Route::put('/doctor/edit/{id}', [DoctorsController::class, 'update'])->name('update-doctor');
     Route::delete('/doctor/delete/{id}', [DoctorsController::class, 'delete'])->name('delete-doctor');
+
+    // Career 
+    Route::get('/career', [CareerController::class, 'index'])->name('career');
+    Route::get('/career/create', [CareerController::class, 'create'])->name('add-career');
+
+
+    // Message from 
+    Route::get('/message', [MessageController::class, 'index'])->name('message');
+    Route::get('/message/edit/{id}', [MessageController::class, 'edit'])->name('edit-message');
+    Route::post('/message/edit', [MessageController::class, 'update'])->name('edit-message');
+
+
+    // Gallery
+    Route::get('/show-gallery', [ProgramController::class, 'index'])->name('show-gallery');
+    Route::get('/gallery/create', [ProgramController::class, 'create'])->name('add-gallery');
+    Route::post('/gallery/create', [ProgramController::class, 'store'])->name('add-gallery');
+    Route::get('/gallery/edit/{id}', [ProgramController::class, 'edit'])->name('edit-gallery');
+    Route::put('/gallery/edit/{id}', [ProgramController::class, 'update'])->name('update-gallery');
 });

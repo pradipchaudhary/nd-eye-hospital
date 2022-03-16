@@ -5,6 +5,12 @@ $(document).ready(function () {
   });
 });
 
+// Light Box
+$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+  event.preventDefault();
+  $(this).ekkoLightbox();
+});
+
 
 // Text  Limit for description 
 $(document).ready(function ()

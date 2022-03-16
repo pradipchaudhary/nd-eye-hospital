@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
 
   </head>
 

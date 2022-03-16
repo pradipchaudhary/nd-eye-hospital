@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Edit Service')
+@section('title', 'Edit Team Member')
 @section('content')
 
 <div class="container-fluid">
@@ -8,12 +8,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h4 class="mb-0 font-size-18">Edit Team member</h4>
+                <h4 class="mb-0 font-size-18">Edit Team Member</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Team member</li>
+                        <li class="breadcrumb-item active">Team Member</li>
                     </ol>
                 </div>
 
@@ -36,7 +36,7 @@
                     <div class="text-sm-right">
                         <a href="{{ route('team') }}" type="button"
                             class="btn btn-primary btn-rounded waves-effect waves-light mb-2 mr-2"><i
-                                class="bx bx-arrow-back mr-1"></i> View  </a>
+                                class="bx bx-arrow-back mr-1"></i> View Team Member </a>
                     </div>
 
                     <form class="custom-validation" action="{{ route('update-team',$team->id ) }}" method="POST" enctype="multipart/form-data">
@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <div>
-                                <textarea name="description"   class="form-control" rows="5"> {{ $team->description }}  </textarea>
+                                <textarea name="description" id="summernote1"  class="form-control" rows="5"> {{ $team->description }}  </textarea>
                                 {{-- <textarea name="description" value="{{ $team->description }}" id="" cols="30" rows="10"> {{ $team->description }} </textarea> --}}
                             </div>
                         </div>

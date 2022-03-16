@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', 'View News & Event')
 @section('content')
 
 <div class="container-fluid">
@@ -41,11 +41,11 @@
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th>S.No.</th>
+                                <th class="w-5">S.No.</th>
                                 <th> Title</th>
-                                <th> Description </th>
-                                <th>Image</th>
-                                <th>Action</th>
+                                {{-- <th> Description </th> --}}
+                                {{-- <th>Image</th> --}}
+                                <th class="w-15">Action</th>
                             </tr>
                         </thead>
 
@@ -58,25 +58,84 @@
                                 <td>   {{  $count++ }}</td>
                                 {{-- <td>{{ $slider->id }}</td> --}}
                                 <td>{{ $item->title }}</td>
-                                <td>{{ $item->description }}</td>
-                                <td><img src="{{ asset('uploads/news/'.$item->image) }}" width="40px" height="40px" alt="Image"></td>
-                                <td>
-                                    <a href="{{ route('edit-news', $item->id) }}" class="mr-3 text-primary"
+                                {{-- <td>{{ $item->description }}</td> --}}
+                               
+                                <td class="d-flex">
+                                    {{-- view btn --}}
+                                    <button type="button" class=" btn-success btn-sm mr-2  waves-effect waves-light" data-toggle="modal" data-target=".exampleModal{{  $item->id }}">
+                                        <i class='bx bxs-show' ></i>
+                                    </button>
+                                    {{-- edit btn --}}
+                                    <button class="d-btn btn-primary  mr-2">
+                                        <a href="{{ route('edit-news', $item->id) }}" class="text-light"
                                         data-toggle="tooltip" data-placement="top" title=""
                                         data-original-title="Edit"><i
                                             class="mdi mdi-pencil font-size-18"></i></a>
-
-                                            <form action="{{ route('delete-news', $item->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button>
-                                                <i class="mdi mdi-trash-can font-size-18"></i>
-
-                                            </button>
-
-                                            </form>
+                                    </button>
+                                    {{-- Delete btn --}}
+                                    <form class="" action="{{ route('delete-news', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn-danger d-btn">
+                                            <i class="mdi mdi-trash-can font-size-18"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
+
+                            <!-- Modal -->
+                            <div class="modal fade exampleModal{{  $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">News & Event Information</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body view-info">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <ul class="notice-list notice-info-list">
+                                                                            <li class="col-md-12">
+                                                                                <strong> Title : </strong>
+                                                                                <span>{{ $item->title }}</span>
+                                                                            </li>
+                                                                           
+                                                                            <li class="col-md-12">
+                                                                                <strong>Description : </strong> <br /> <span> {!! $item->description !!}</span>
+                                                                            </li>
+                                                                            <li class="col-md-12">
+                                                                                <strong>Images : </strong> <br /> <span>
+                                                                                    <img class="w-100" src="{{ asset('uploads/news/'.$item->image) }}"
+                                                                                        alt="News  image" /> </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-print-none">
+                                                            <div class="float-right">
+                                                                <a href="#" class="btn btn-danger w-md waves-effect waves-light"
+                                                                    data-dismiss="modal">Close</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end modal --}}
                             @endforeach
 
                         </tbody>

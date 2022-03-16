@@ -31,10 +31,14 @@
                 <li><a href="{{ route('testimonial') }}" class="waves-effect">
                     <i class='bx bx-message-dots' ></i> <span> Testimonial </span></a>
                 </li>
+                <li><a href="{{ route('show-gallery') }}" class="waves-effect">
+                    <i class='bx bx-images'></i> <span> Gallery </span></a>
+                </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class='bx bx-buildings'></i>
-                        <span>Hospital Members </span>
+                        <span>Hospital Info </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('director') }}"> <i class='bx bx-hash' ></i> <span> Board of Directors</span> </a></li>
@@ -45,25 +49,23 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('doctor') }}"> <i class='bx bx-plus-medical'></i> <span> Doctors </span> </a></li>
                     </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-notification"></i>
-                        <span> Notice </span>
-                    </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="notice-list.html">Notice List</a></li>
-                        <li><a href="send-notice.html">Send Notice</a></li>
+                        <li><a href="{{ route('message') }}"> <i class='bx bx-message-dots' ></i> <span> Chairman </span> </a></li>
                     </ul>
                 </li>
+
+                {{-- Career Page  --}}
+                <li><a href="{{ route('career') }}" class="waves-effect">
+                    <i class='bx bx-message-dots' ></i> <span> Career </span></a>
+                </li>
+          
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-question-mark"></i>
                         <span> FAQ </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="faq-list.html">FAQ List</a></li>
+                        <li><a href="#">FAQ List</a></li>
                     </ul>
                 </li>
             </ul>
