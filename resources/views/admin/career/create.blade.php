@@ -34,7 +34,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-sm-right">
-                        <a href="{{ route('service') }}" type="button"
+                        <a href="{{ route('career') }}" type="button"
                             class="btn btn-primary btn-rounded waves-effect waves-light mb-2 mr-2"><i
                                 class="bx bx-arrow-back mr-1"></i> View Career </a>
                     </div>
@@ -72,10 +72,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="resume"> Image</label>
-                            <input type="file" name="image" class="form-control-file" id="notice-img">
-                        </div>
+                        
 
                         <div class="form-group mb-0">
                             <div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
+use App\Models\About;
+use App\Models\Career;
 use App\Models\Directors;
 use App\Models\Doctors;
 use App\Models\HomeSlider;
@@ -24,89 +26,111 @@ class FrontendController extends Controller
     public function index()
     {
         $slider = HomeSlider::query()->get();
+        $about = About::query()->get();
         $service = Services::query()->get();
         $testimonial = Testimonial::query()->get();
         $specialities = Specialities::query()->get();
         $message = Message::query()->get();
         $news = News::query()->get();
-        return view('frontend.index', ['slider' => $slider, 'service' => $service, 'news' => $news, 'testimonial' => $testimonial, 'specialities' => $specialities, 'message' => $message]);
+        return view('frontend.index', ['slider' => $slider, 'service' => $service, 'news' => $news, 'testimonial' => $testimonial, 'specialities' => $specialities, 'message' => $message, 'about'=>$about]);
     }
     //News  
     public function news()
     {
         $news = News::query()->get();
-        return view('frontend.news', ['news' => $news]);
+        $about = About::query()->get();
+        return view('frontend.news', ['news' => $news, 'about'=>$about]);
     }
     public function newsDetail($id)
     {
         $news = News::query()->where('id', $id)->first();
-        return view('frontend.news-detail', ['news' => $news]);
+        $about = About::query()->get();
+        return view('frontend.news-detail', ['news' => $news, 'about'=>$about]);
     }
 
     public function about()
     {
         // $news=News::query()->get();
         $board = Directors::query()->get();
+        $about = About::query()->get();
         $team = Team::query()->get();
-        return view('frontend.about', ['board' => $board, 'team' => $team]);
+        $about = About::query()->get();
+        return view('frontend.about', ['board' => $board, 'team' => $team, 'about' => $about]);
     }
-
+    // Specialities 
+    public function specialities()
+    {
+        $specialities = Specialities::query()->get();
+        $about = About::query()->get();
+        // dd($specialities);
+        return view('frontend.specialities', ['specialities' => $specialities, 'about'=>$about]);
+    }
+    public function specialitiesDetail($id)
+    {
+        $specialities = Specialities::query()->where('id', $id)->first();
+        $about = About::query()->get();
+        return view('frontend.specialities-detail', ['specialities' => $specialities, 'about'=>$about]);
+    }
     // Doctors 
     public function doctors()
     {
         $doctors = Doctors::query()->get();
-        return view('frontend.doctors', ['news' => $doctors]);
+        $about = About::query()->get();
+        return view('frontend.doctors', ['news' => $doctors, 'about'=>$about]);
     }
 
     public function doctorsDetail($id)
     {
         $doctors = Doctors::query()->where('id', $id)->first();
-        return view('frontend.doctors-detail', ['doctors' => $doctors]);
+        $about = About::query()->get();
+        return view('frontend.doctors-detail', ['doctors' => $doctors, 'about'=>$about]);
     }
 
-    // Specialities 
-    public function specialities()
-    {
-        $specialities = Specialities::query()->get();
-        // dd($specialities);
-        return view('frontend.specialities', ['specialities' => $specialities]);
+    public function service(){
+        $service = Services::query()->get();
+        $about = About::query()->get();
+        return view('frontend.services', ['service'=> $service, 'about'=>$about]);
     }
-    public function specialitiesDetail($id)
-    {
-        $specialities = Specialities::query()->where('id', $id)->first();
-        return view('frontend.specialities-detail', ['specialities' => $specialities]);
-    }
+    
     // Appointment
     public function appointment()
-    {
-        return view('frontend.appointment');
+    {   
+        $about = About::query()->get();
+        return view('frontend.appointment',['about' => $about]);
     }
 
     // Appointment
     public function careers()
     {
-        return view('frontend.careers');
+        $career = Career::query()->get();
+        $about = About::query()->get();
+        $about = About::query()->get();
+        return view('frontend.careers', ['career' => $career, 'about'=> $about]);
     }
 
     // Appointment
     public function gallery()
     {
         $gallery = Program::query()->with('programPhotos')->get();
+        $about = About::query()->get();
 
-        return view('frontend.gallery', compact('gallery'));
+        return view('frontend.gallery', ['gallery'=>$gallery, 'about'=>$about]);
     }
 
     public function subGallery($id)
     {
         $gallery = Program::query()->where('id', $id)->with('programPhotos')->first();
+        $about = About::query()->get();
 
-        return view('frontend.sub-gallery', compact('gallery'));
+        return view('frontend.sub-gallery', ['gallery'=>$gallery, 'about'=>$about]);
     }
 
     // Contact 
     public function contact()
     {
-        return view('frontend.contact');
+        $about = About::query()->get();
+        return view('frontend.contact', ['about'=>$about]);
+
     }
 
     public function contactEmail(Request $request)

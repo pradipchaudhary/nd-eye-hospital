@@ -66,8 +66,8 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <p class="text-muted font-weight-medium">Number of Users</p>
-                                    <h4 class="mb-0">4,074</h4>
+                                    <p class="text-muted font-weight-medium">Number of Doctor </p>
+                                    <h4 class="mb-0">{{ $totalService }}</h4>
                                 </div>
 
                                 <div
@@ -90,47 +90,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-sm-left">User List</h4>
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>S.No.</th>
-                                <th>Name</th>
-                                <th>Profession</th>
-                                <th>Mobile Number</th>
-                                <th>Email</th>
-                                <th>Country</th>
-                                <th>District</th>
-                                <th>Registered date</th>
-                                <th>User Level</th>
-                                <th>Refer Info</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <th>Soft Benz</th>
-                                <th>IT</th>
-                                <th>9812345678</th>
-                                <th>softbenzinfosys@gmail.com</th>
-                                <th>Nepal</th>
-                                <th>Kathmandu</th>
-                                <th>25/08/2020</th>
-                                <th>Level 2</th>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button"
-                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                        data-toggle="modal" data-target=".exampleModal">
-                                        <i class="fa fa-eye"></i> View
-                                    </button>
-
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    
                 </div>
             </div>
         </div> <!-- end col -->

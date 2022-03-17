@@ -42,15 +42,103 @@
                         <thead>
                             <tr>
                                 <th class="w-5">S.No.</th>
-                                <th>Title</th>
-                                <th>Slder Description </th>
+                                <th> Title</th>
+                                <th> Post  </th>
                                 <th class="w-15">Action</th>
                             </tr>
                         </thead>
 
 
                         <tbody>
-                           
+                            @php($count =1)
+                            @foreach ($career as $item )
+
+                            <tr>
+                                <td>   {{  $count++ }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td >{!! $item->post !!}</td>
+                                <td class="d-flex">
+                                    {{-- view btn --}}
+                                    <button type="button" class=" btn-success btn-sm mr-2  waves-effect waves-light" data-toggle="modal" data-target=".exampleModal{{  $item->id }}">
+                                        <i class='bx bxs-show' ></i>
+                                    </button>
+                                    {{-- edit btn --}}
+                                    <button class="d-btn btn-primary  mr-2">
+                                        <a href="{{ route('edit-career', $item->id) }}" class="text-light"
+                                        data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Edit"><i
+                                            class="mdi mdi-pencil font-size-18"></i></a>
+                                    </button>
+                                    {{-- Delete btn --}}
+                                    <form class="" action="{{ route('delete-career', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn-danger d-btn">
+                                            <i class="mdi mdi-trash-can font-size-18"></i>
+                                        </button>
+
+                                    </form>
+                                </td>
+                            </tr>
+
+                            <!-- Modal -->
+                            <div class="modal fade exampleModal{{  $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Career Information</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body view-info">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <ul class="notice-list notice-info-list">
+                                                                            <li class="col-md-12">
+                                                                                <strong> Title : </strong>
+                                                                                <span>{{ $item->title }}</span>
+                                                                            </li>
+                                                                           
+                                                                            <li class="col-md-12">
+                                                                                <strong>Subject : </strong> <br /> <span> {!! $item->subject !!}</span>
+                                                                            </li>
+
+                                                                            <li class="col-md-12">
+                                                                                <strong>Post : </strong> <br /> <span> {!! $item->post !!}</span>
+                                                                            </li>
+
+                                                                            <li class="col-md-12">
+                                                                                <strong>Description : </strong> <br /> <span> {!! $item->description !!}</span>
+                                                                            </li>
+                                                                            
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-print-none">
+                                                            <div class="float-right">
+                                                                <a href="#" class="btn btn-danger w-md waves-effect waves-light"
+                                                                    data-dismiss="modal">Close</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end modal --}}
+                            @endforeach
 
 
                         </tbody>

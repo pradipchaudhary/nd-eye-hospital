@@ -52,8 +52,6 @@
                         <div class="form-group">
                             <label> Description</label>
                             <div>
-                                {{-- <input type="text" name="description" class="form-control" required
-                                    placeholder="Enter Slider Description" value="" /> --}}
                                     <textarea name="description" id="summernote1" rows="10" class="form-control"></textarea>
                             </div>
                         </div>

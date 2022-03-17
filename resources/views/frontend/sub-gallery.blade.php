@@ -1,6 +1,7 @@
 
 
 @section('title', 'Gallery | Navadristi Eye Hospital, Ithari')
+@section('gallery','active')
 @include('inc.header')
 @include('inc.nav')
 <!-- === Second page  -->
@@ -27,8 +28,10 @@
               <h2 class=""> {{ $gallery->title }} </h2>
                 <div class="sub_gallery_item">
                   @foreach ($gallery->programPhotos as $key => $value)
-                    <div class="sub_gallery_item_img">
-                      <img src="{{ asset('uploads/gallery/'.$value->image) }}" alt="">
+
+                  <div class="sub_gallery_item_img">
+                  <a class="gimg" href="{{ asset('uploads/gallery/'.$value->image) }}"><img src="{{ asset('uploads/gallery/'.$value->image) }}" alt="Gallery Image"></a>
+                      {{-- <img src="{{ asset('uploads/gallery/'.$value->image) }}" alt=""> --}}
                     </div>
                   @endforeach
                     

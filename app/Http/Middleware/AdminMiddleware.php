@@ -19,7 +19,6 @@ class AdminMiddleware
     {
         // if (Auth::check()) {
             if (Auth::user()->role_as == '1') { // 1 = Admin | 0 = simple user
-                return redirect('admin/dashboard');
                 return $next($request);
             } else {
                 return redirect('/home')->with('status', 'Access Denied  ! As you are not an Admin ');

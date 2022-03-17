@@ -7,7 +7,7 @@
 
     <!-- === Second page  -->
 
-    <section class="sec_page">
+    <div class="sec_page">
         <div class="breadcrum">
           <div class="container">
             <div class="bread">
@@ -30,19 +30,19 @@
                 </div>
                 <div class="mt-4">
                     <p>
-                        {{ $specialities->description }}
+                       {!! $specialities->description !!}
                     </p>
                 </div>
                 <div class="mt-4">
                     <h4> Symtoms </h4>
                     <p>
-                        {{  $specialities->symptoms }}
+                        {!! $specialities->symptoms !!}
                     </p>
                 </div>
                 <div class="mt-4">
                     <h4> Treatment Options </h4>
                     <p>
-                        {{  $specialities->treatment_options }}
+                        {!! $specialities->treatment_options !!}
                     </p>
                 </div>
             </div>
@@ -50,6 +50,6 @@
            
           </div>
         </div>
-      </section>
+      </div>
 
 @include('inc.footer')

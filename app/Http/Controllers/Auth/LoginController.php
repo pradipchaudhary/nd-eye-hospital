@@ -31,10 +31,10 @@ class LoginController extends Controller
     public function authenticated()
     {
         if (Auth::user()->role_as == '1') {
-            // dd('hello');
             return redirect('admin/dashboard')->with('status', 'Welcome to Dashboard !');
-        } elseif (Auth::user()->role_as == '0') {
-            return redirect('/home')->with('status', 'Logged in Successfully !');
+        } 
+        elseif (Auth::user()->role_as == '0') {
+            return redirect('/')->with('status', 'Logged in Successfully !');
         }
         else{
         }

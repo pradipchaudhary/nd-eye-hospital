@@ -31,8 +31,8 @@ class ServiceController extends Controller
 
     public function store(Request $request){
 
-        echo "<pre>";
-        print_r($request->all());
+        // echo "<pre>";
+        // print_r($request->all());
         $service = new Services;
         $service->title = $request->input('title');
         $service->description = $request->input('description');

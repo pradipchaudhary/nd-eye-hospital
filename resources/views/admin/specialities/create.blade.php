@@ -51,21 +51,21 @@
                         <div class="form-group">
                             <label> Description</label>
                             <div>
-                                    <textarea name="description" id="editor" rows="10" class="form-control"></textarea>
+                                    <textarea name="description" id="summernote1" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label> Symptoms</label>
                             <div>
                                 
-                                    <textarea name="symptoms" id="" rows="10" class="form-control"></textarea>
+                                    <textarea name="symptoms" id="summernote2" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label> Treatment Option </label>
                             <div>
                                 
-                                    <textarea name="treatment_options" id="" rows="10" class="form-control"></textarea>
+                                    <textarea name="treatment_options" id="summernote3" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
    

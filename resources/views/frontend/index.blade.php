@@ -7,7 +7,7 @@
 {{-- content start  --}}
 <!-- ============ hero  =========== -->
 {{-- banner --}}
-<section id="banner">
+<div id="banner">
     <div class="owl-carousel banner owl-theme">
         @foreach ($slider as $item)
 
@@ -21,121 +21,51 @@
         @endforeach
 
     </div>
-</section>
+</div>
 
 
   <!-- about section -->
+  
   <section id="about__section">
     <div class="mycontainer">
       <div class="container">
+        @foreach ($about as $item )
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="col-lg-5 col-md-5 col-sm-12">
            <div class="about_img">
-             <img src="{{ asset('images/logo.jpg') }}" alt="">
+             <img src="{{ asset('uploads/about/'. $item->image ) }}" alt="">
            </div>
           </div>
-          <div class="col-lg-8 col-md-8 col-sm-12">
+          <div class="col-lg-7 col-md-7 col-sm-12">
             <div class="about_des">
-              <h2> Welcome </h2>
-              <h6 class="mb-3"> Nava Dristi Eye Hospital </h6>
-              <div class="des">
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis provident quasi ad deserunt a obcaecati hic quibusdam vitae debitis voluptates.
-                </p>
-                <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis veniam labore quos illo, eaque ullam voluptatum ipsum cumque adipisci, ex sint provident optio? Earum nostrum quo recusandae. Odio, accusantium deserunt!</p>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis provident quasi ad deserunt a obcaecati hic quibusdam vitae debitis voluptates.
-                </p>
+              <h2> Welcome to</h2>
+              <h6 class="mb-3"> {{ $item->title }} </h6>
+              <div class="des limit-about">
+                {!! $item->description !!}
               </div>
               <div class="cat mt-4">
                 <a href="{{ url('/about') }}"> <span> Read more  </span> <i class="fa-solid fa-arrow-right"></i> </a>
               </div>
-          </div>
             </div>
-          
+            </div>  
         </div>
+        @endforeach
       </div>
     </div>
   </section>
+  
 
-
-  {{-- Message from Chair Man Section --}}
-  <section id="message_from">
-      <div class="container">
-       @foreach ($message as $item)
-       <div class="message_from">
-        <div class="message_detail">
-          <div class="message_from_img">
-            @if($item->photo)
-              <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
-            @else
-                <img src="{{ asset('images/default.png') }}" />
-            @endif
-          </div>
-          <div class="message_from_detail">
-            <h4 class="name"> {{ $item->name }} </h4>
-            <p> {{ $item->position }} </p>
-            <button class="message_from_cat" data-bs-toggle="modal"
-              data-bs-target="#exampleModal99">
-              <span> View More </span> <i class="fa-solid fa-arrow-right"></i>
-          </button>
-          </div>
-        </div>
-        <div class="">
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal99" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                      <h6> Message from the {{ $item->position }}  </h6>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body pb-4">
-                        <div class="message_from_popup">
-                            <div class="row">
-                              <div class="col-md-4 left_box">
-                                <div class="imgbox">
-                                  @if($item->photo)
-                                    <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
-                                  @else
-                                      <img src="{{ asset('images/default.png') }}" />
-                                  @endif
-                                  {{-- <img src="{{ asset('images/profile.png') }}" alt=""> --}}
-                                </div>
-                              </div>
-                              <div class="col-md-8 right_box">
-                                <h4> {{  $item->name }}  </h4>
-                                <div class="message_from_position"> {{ $item->position }} </div>
-                                <p class="mt-4 pr-4">
-                                 {{-- {{ $item->message }} --}}
-                                  {!!  $item->message !!}
-                                </p>
-                              
-                              </div>
-                            </div>
-                            
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- end pop --}}
-        </div>
-      </div>
-       @endforeach
-      </div>
-    
-
-  </section>
+  
 
   <!-- === Service Section === -->
   <section id="services">
     <div class="container">
       <h1 class="">Our <span> Specilities  </span></h1>
+      <div class="separator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
       <div class="owl-carousel services owl-theme pt-4">
 
         @foreach ($specialities as $item )
@@ -166,6 +96,89 @@
     </div>
   </section>
 
+
+  {{-- Message from Chair Man Section --}}
+  <section id="message_from">
+    <div class="container">
+     @foreach ($message as $item)
+     <div class="message_from">
+      <div class="message_detail">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-4">
+            <div class="message_from_img">
+              @if($item->photo)
+                <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
+              @else
+                  <img src="{{ asset('images/default.png') }}" />
+              @endif
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="message_from_detail">
+              <h4 class="name"> {{ $item->name }} </h4>
+              <div class="position"> {{ $item->position }} </div>
+              <div class="mt-3 limit-description des">
+                  {!! $item->message !!}
+              </div>
+              <button class="message_from_cat mt-3" data-bs-toggle="modal"
+                data-bs-target="#exampleModal99">
+                <span> View More </span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+      <div class="">
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal99" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <h6> Message from the {{ $item->position }}  </h6>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"
+                          aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body pb-4">
+                      <div class="message_from_popup">
+                          <div class="row">
+                            <div class="col-md-4 left_box">
+                              <div class="imgbox">
+                                @if($item->photo)
+                                  <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
+                                @else
+                                    <img src="{{ asset('images/default.png') }}" />
+                                @endif
+                                {{-- <img src="{{ asset('images/profile.png') }}" alt=""> --}}
+                              </div>
+                            </div>
+                            <div class="col-md-8 right_box">
+                              <h4> {{  $item->name }}  </h4>
+                              <div class="message_from_position"> {{ $item->position }} </div>
+                              <p class="mt-4 pr-4">
+                               {{-- {{ $item->message }} --}}
+                                {!!  $item->message !!}
+                              </p>
+                            
+                            </div>
+                          </div>
+                          
+                         
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {{-- end pop --}}
+      </div>
+    </div>
+     @endforeach
+    </div>
+  
+</section>
   <!-- Book Appointment -->
   <section class="book_appointment">
     <div class="container appointment_info">
@@ -179,13 +192,18 @@
   
     <!-- News and Events   -->
     <section class="carousel_se_02 news__events">
-      <div class="container-fluid py-5">
+      <div class="container-fluid">
         <div class="container">
           <div class="row">
             <div class="col-sm-12 text-center wow fadeInUp">
-              <h2>News & Events</h2>
+              <h2>News &  Update</h2>
+              <div class="separator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
-            <div class="col-md-12 px-4 pt-0">
+            </div>
+            <div class="col-md-12 pt-0">
               <div class="owl-carousel news_events owl-theme">
                 <!-- 01 -->
                 @foreach ($news as $item)
@@ -222,7 +240,7 @@
               </div>
             </div>
           <div class="view_all text-center">
-              <a href="{{ route('news-event') }}"> View all News </a>
+              <a href="{{ route('news-event') }}"> View all </a>
           </div>
           </div>
 
@@ -235,6 +253,11 @@
     <div id="testimonials">
       <div class="container">
         <h1>Patients<span> Say About Us </span></h1>
+        <div class="separator">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+      </div>
         <div class="row">
           <div class="col-md-12">
             <div id="testimonial-slider" class="owl-carousel">

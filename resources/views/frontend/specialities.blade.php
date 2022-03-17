@@ -7,7 +7,7 @@
 
     <!-- === Second page  -->
 
-    <section class="sec_page">
+    <div class="sec_page">
         <div class="breadcrum">
           <div class="container">
             <div class="bread">
@@ -26,33 +26,38 @@
             <!-- Item one  -->
             @foreach ($specialities as $speciality)
               <div class="row spec_item">
-                <div class="col-3 spec_item_left">
-                  {{-- <h5>Cataract</h5> --}}
-                  <div class="imgBox">
-                    @if($speciality->image)
-                    <img src="{{ asset('uploads/specialities/'.$speciality->image) }}" alt="Images" />
-                  @else
-                      <img src="{{ asset('images/default.png') }}" />
-                  @endif
-                    {{-- <img src="assets/images/banner01.jpg" alt="" /> --}}
-                  </div>
+                <div class="col-3 ">
+                  <div class="spec_item_left">
+                    <div class="imgBox">
+                      @if($speciality->image)
+                      <img src="{{ asset('uploads/specialities/'.$speciality->image) }}" alt="Images" />
+                    @else
+                        <img src="{{ asset('images/default.png') }}" />
+                    @endif
+                    </div>
+                  </div> 
                 </div>
                 <div class="col-9 spec_item_right">
                   <h4>{{ $speciality->name }}</h4>
                   <p>
-                    {{ $speciality->description }}
+                    {!!  $speciality->description !!}
                   </p>
                   <div class="cat">
                     <a href="{{ route('specialities-detail',$speciality->id) }}"> View More <i class="fa-solid fa-arrow-right"></i></a>
                   </div>
                 </div>
               </div>
+
+              
             @endforeach
+
+            {{-- item 1 --}}
+           
             
   
            
           </div>
         </div>
-      </section>
+      </div>
 
 @include('inc.footer')

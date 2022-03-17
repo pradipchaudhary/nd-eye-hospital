@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\SpecialitiesController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Models\Services;
+use Illuminate\Auth\Events\Logout;
 
 //! :: Web Routes
 
@@ -30,6 +32,8 @@ Route::get('/', [FrontendController::class, 'index']);
 
 // About
 Route::get('about', [FrontendController::class, 'about'])->name('about');
+Route::get('services', [FrontendController::class, 'service'])->name('services');
+
 
 // Message from
 // Route::get('message', [FrontendController::class, 'message'])->name('');
@@ -63,12 +67,10 @@ Route::get('/subgallery/{id}', [FrontendController::class, 'subGallery'])->name(
 
 
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-
+Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('logout',[HomeController::class,'logout'])->name('logout');
     // About Info
-    
-
     // slider
     Route::get('/slider', [SliderController::class, 'index'])->name('slider');
     Route::get('/slider/create', [SliderController::class, 'create'])->name('add-slider');
@@ -139,12 +141,21 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Career 
     Route::get('/career', [CareerController::class, 'index'])->name('career');
     Route::get('/career/create', [CareerController::class, 'create'])->name('add-career');
+    Route::post('/career/create', [CareerController::class, 'store'])->name('add-career');
+    Route::get('/career/edit/{id}', [CareerController::class, 'edit'])->name('edit-career');
+    Route::put('/career/edit/{id}', [CareerController::class, 'update'])->name('update-career');
+    Route::delete('/career/delete/{id}', [CareerController::class, 'delete'])->name('delete-career');
 
 
     // Message from 
     Route::get('/message', [MessageController::class, 'index'])->name('message');
     Route::get('/message/edit/{id}', [MessageController::class, 'edit'])->name('edit-message');
     Route::post('/message/edit', [MessageController::class, 'update'])->name('edit-message');
+
+    // About
+    Route::get('/about',[AboutController::class,'index'])->name('about');
+    Route::get('/about/edit/{id}',[AboutController::class,'edit'])->name('edit-about');
+    Route::put('/about/edit/{id}',[AboutController::class,'update'])->name('edit-aboutus');
 
 
     // Gallery
@@ -153,4 +164,5 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('/gallery/create', [ProgramController::class, 'store'])->name('add-gallery');
     Route::get('/gallery/edit/{id}', [ProgramController::class, 'edit'])->name('edit-gallery');
     Route::put('/gallery/edit/{id}', [ProgramController::class, 'update'])->name('update-gallery');
+    
 });

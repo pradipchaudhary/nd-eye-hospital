@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'ND') }}</title>
+    {{-- <title>{{ config('app.name', 'ND') }}</title> --}}
+    <title> Login </title>
 
 
 

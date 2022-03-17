@@ -24,7 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (auth()->user()->role_as==1) {
+            return redirect()->route('admin.dashboard');
+        }
+       
+    }
+
+    public function logout()
+    {
+       session()->flush();
+       return redirect()->route('admin.dashboard');
+       
     }
 
     public function emailCheck()

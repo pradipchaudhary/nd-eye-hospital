@@ -6,7 +6,7 @@
 @include('inc.nav')
 <!-- === Second page  -->
 
-<section class="sec_page">
+<div class="sec_page">
     <div class="breadcrum">
       <div class="container">
         <div class="bread">
@@ -19,29 +19,19 @@
         <h1 class="sec_page_title">About Us</h1>
       </div>
     </div>
+</div>
     <!-- second page body -->
     <div class="sec_page_body py-5">
       <div class="container">
-        <p>
-          Nava Dristi Eye Hospital was established with the aim of providing
-          quality treatment at an affordable price to the patients of province
-          #1. It also aims at developing a favorable environment for both
-          health service providers and health service seekers.
-        </p>
-        <p>
-          With the help of our service providers and blessings of our
-          patients, we have been able to develop as a trusted center for an
-          eye care.
-        </p>
-        <p>
-          Local governments bodies, in and around Itahari, have helped us in
-          each and every steps of our community outreach programs. With their
-          co-operation we have been able to reach the patients who were never
-          reached.
-        </p>
+        <div class="about ">
+          {{-- {!! $about->description !!} --}}
+          @foreach ($about as $item)
+            <p> {!!  $item->description !!}</p>
+          @endforeach
+        </div>
 
 
-        <section class="board_director">
+        <div class="board_director">
           <h1>Board of Directors</h1>
           <div class="row d-flex justify-content-center">
             <!-- board member  -->
@@ -108,18 +98,13 @@
             </div>
             @endforeach
 
-
-
-
-            <!-- board member  -->
-
           </div>
-        </section>
+        </div>
 
 
 
         {{-- team Member section --}}
-        <section id="team_member">
+        <div id="team_member">
           <h1>Our Team </h1>
           <div class="row d-flex justify-content-center">
             <!-- board member  -->
@@ -192,10 +177,8 @@
             <!-- board member  -->
 
           </div>
-        </section>
+        </div>
       </div>
     </div>
-  </section>
-
 
 @include('inc.footer')

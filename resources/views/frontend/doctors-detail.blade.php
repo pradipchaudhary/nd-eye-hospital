@@ -4,7 +4,7 @@
 @include('inc.nav')
 <!-- === Second page  -->
 
-<section class="sec_page">
+<div class="sec_page">
     <div class="breadcrum">
       <div class="container">
         <div class="bread">
@@ -32,11 +32,11 @@
                 <b> Specialization :</b>
                 <p class="">{{ $doctors->specialization }}</p>
                 <b> About :</b>
-                <p class="">{{ $doctors->description }}</p>
+                <p class="">{!! $doctors->description !!}</p>
                 <b> Professional Experience :</b>
-                <p class="">{{ $doctors->professional_experience }}</p>
+                <p class="">{!! $doctors->professional_experience !!}</p>
                 <b> Experties :</b>
-                <p class="">{{ $doctors->expertise }}</p>
+                <p class="">{!! $doctors->expertise !!}</p>
                 <b> Experience </b>
                 <p class="">{{ $doctors->experience }}</p>
                 {{-- <b> Socail Media </b> --}}
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
 
 @include('inc.footer')

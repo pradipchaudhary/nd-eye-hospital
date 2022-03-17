@@ -14,6 +14,9 @@
                     </a>
                 </li>
                 <li class="menu-title">Information</li>
+                <li><a href="{{ route('about') }}" class="waves-effect">
+                    <i class='bx bx-hash'></i> <span> About </span></a>
+                </li>
                 <li><a href="{{ route('slider') }}" class="waves-effect">
                     <i class='bx bx-images'></i> <span> Banners </span></a>
                 </li>

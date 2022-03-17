@@ -4,7 +4,18 @@ $(document).ready(function () {
     $(this).next(".sub-menu").slideToggle();
   });
 });
-
+// :: Loading
+$(window).on('load', function () {
+  $('.loading').fadeOut();
+});
+// :: Scroll Smooth To Go Section
+$('.move-section').on('click', function (e) {
+  e.preventDefault();
+  var anchorLink = $(this);
+  $('html, body').stop().animate({
+      scrollTop: $(anchorLink.attr('href')).offset().top + 1
+  }, 1000);
+});
 // Light Box
 $(document).on("click", '[data-toggle="lightbox"]', function(event) {
   event.preventDefault();
@@ -19,6 +30,17 @@ $(document).ready(function ()
      if(len>200)
      {
          $(this).text($(this).text().substr(0,150)+'...');
+     }
+ });
+});
+
+// Text  Limit for description 
+$(document).ready(function ()
+{ $(".limit-about").each(function(i){
+     var len=$(this).text().trim().length;
+     if(len>400)
+     {
+         $(this).text($(this).text().substr(0,400)+'...');
      }
  });
 });
