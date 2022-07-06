@@ -50,6 +50,22 @@
                             </div>
                         </div>
                         <div class="form-group">
+                                <label for="category">Select Category </label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="">{{ __('select category') }}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ $service->categories != null ? ($category->id == $service->categories->id ? 'selected' : '') : '' }}>
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category')
+                                    <h6 class="alert alert-success">
+                                        {{ $message }}
+                                    </h6>
+                                @enderror
+                            </div>
+                        <div class="form-group">
                             <label>Description</label>
                             <div>
                                 

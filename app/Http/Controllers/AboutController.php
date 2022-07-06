@@ -41,10 +41,12 @@ class AboutController extends Controller
         $about->fb_url = $request->input('fb_url');
         $about->tw_url = $request->input('tw_url');
         $about->in_url = $request->input('in_url');
+        $about->w_link = $request->input('w_link');
+        $about->v_link = $request->input('v_link');
 
         if($request->hasfile('image'))
         {
-            $destination = 'upload/about'.$about->image;
+            $destination = 'public/uploads/about'.$about->image;
 
             if(File::exists($destination)){
                 File::delete($destination);
@@ -54,7 +56,7 @@ class AboutController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/about/', $filename);
+            $file->move('public/uploads/about/', $filename);
             $about->image = $filename;
         }
         $about->save();

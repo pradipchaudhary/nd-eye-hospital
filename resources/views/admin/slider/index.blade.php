@@ -56,7 +56,7 @@
                                 <td class="w-5">   {{  $count++ }}</td>
                                 <td>{{ $slider->title }}</td>
                                 <td >
-                                    {{ $slider->description }}
+                                    {!! $slider->description !!}
                                 </td>
                                 
                                 <td class="d-flex ">

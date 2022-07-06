@@ -7,12 +7,15 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DirectorsController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MessageFromController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\PositionController;
+use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecialitiesController;
@@ -20,9 +23,29 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Models\Services;
 use Illuminate\Auth\Events\Logout;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 //! :: Web Routes
-
+Route::post('/login',function(Request $request){
+       $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        $user = App\Models\User::where('email',$request->email)->first();  
+        if($user != null){
+            if(Hash::check($request->password,$user->password)){
+                $request->session()->put('is_logged_in',true);
+                return redirect()->route('admin.dashboard');
+            }else{
+                return redirect()->back();
+            }
+        }else{
+                return redirect()->back();
+        }      
+});
+// Route::get('hhh',function(){
+//   Artisan::call("cache:clear"); 
+// });
 Auth::routes();
 
 
@@ -30,9 +53,11 @@ Route::get('/emailCheck', [HomeController::class, 'emailCheck'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontendController::class, 'index']);
 
+
 // About
 Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('services', [FrontendController::class, 'service'])->name('services');
+Route::get('services/{title}', [FrontendController::class, 'serviceDetail'])->name('service-detail');
 
 
 // Message from
@@ -56,18 +81,36 @@ Route::get('/doctors/{id}', [FrontendController::class, 'doctorsDetail'])->name(
 
 // Appointment
 Route::get('/appointment', [FrontendController::class, 'appointment'])->name('appointment');
+Route::post('/appointment-submit', [FrontendController::class, 'appointment_submit'])->name('appointment-submit');
+
+
+// Publication
+Route::get('publication', [FrontendController::class, 'publication'])->name('publication');
+Route::get('publication/{id}', [FrontendController::class, 'publicationDetail'])->name('publication-detail');
 
 
 // Contact Us
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('/contactEmail', [FrontendController::class, 'contactEmail'])->name('contact-us');
 Route::get('/careers', [FrontendController::class, 'careers'])->name('careers');
+Route::post('/careers', [FrontendController::class, 'cvcreate'])->name('add-cv');
+
+Route::get('career/{id}', [FrontendController::class, 'careerDetail'])->name('career-detail');
+
+Route::post('career', [FrontendController::class, 'job_apply'])->name('job-apply');
+
+
+
+
 Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/subgallery/{id}', [FrontendController::class, 'subGallery'])->name('sub-gallery');
+Route::get('/link',function(){
+    Artisan::call('storage:link');
+});
 
 
 
-Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
+Route::prefix('admin')->middleware(['isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('logout',[HomeController::class,'logout'])->name('logout');
     // About Info
@@ -87,9 +130,17 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
     Route::get('/service/edit/{id}', [ServiceController::class, 'edit'])->name('edit-service');
     Route::put('/service/edit/{id}', [ServiceController::class, 'update'])->name('update-service');
     Route::delete('/service/delete/{id}', [ServiceController::class, 'delete'])->name('delete-service');
+    
+    // Category
+    Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('add-category');
+    Route::post('/category/create', [CategoryController::class, 'store'])->name('add-category');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('edit-category');
+    Route::put('/category/edit/{id}', [CategoryController::class, 'update'])->name('update-category');
+    Route::delete('/category/delete/{id}', [CategoryController::class, 'delete'])->name('delete-category');
 
     // Specialities
-    // Services
+
     Route::get('/specialities', [SpecialitiesController::class, 'index'])->name('specialities');
     Route::get('/specialities/create', [SpecialitiesController::class, 'create'])->name('add-specialities');
     Route::post('/specialities/create', [SpecialitiesController::class, 'store'])->name('add-specialities');
@@ -145,6 +196,13 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
     Route::get('/career/edit/{id}', [CareerController::class, 'edit'])->name('edit-career');
     Route::put('/career/edit/{id}', [CareerController::class, 'update'])->name('update-career');
     Route::delete('/career/delete/{id}', [CareerController::class, 'delete'])->name('delete-career');
+    
+    Route::get('/viewcv', [CareerController::class, 'viewcv'])->name('view-cv');
+      Route::get('/allcv', [CareerController::class, 'allcv'])->name('all-cv');
+    
+    //position
+    Route::resource('position', PositionController::class);
+
 
 
     // Message from 
@@ -157,12 +215,21 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
     Route::get('/about/edit/{id}',[AboutController::class,'edit'])->name('edit-about');
     Route::put('/about/edit/{id}',[AboutController::class,'update'])->name('edit-aboutus');
 
-
+    // Publication
+    Route::get('/publication', [PublicationController::class, 'index'])->name('publication');
+    Route::get('/publication/create', [PublicationController::class, 'create'])->name('add-publication');
+    Route::post('/publication/create', [PublicationController::class, 'store'])->name('add-publication');
+    Route::get('/publication/edit/{id}', [PublicationController::class, 'edit'])->name('edit-publication');
+    Route::put('/publication/edit/{id}', [PublicationController::class, 'update'])->name('update-publication');
+    Route::get('/publication/delete/{id}', [PublicationController::class, 'delete'])->name('delete-publication');
+    
     // Gallery
     Route::get('/show-gallery', [ProgramController::class, 'index'])->name('show-gallery');
     Route::get('/gallery/create', [ProgramController::class, 'create'])->name('add-gallery');
     Route::post('/gallery/create', [ProgramController::class, 'store'])->name('add-gallery');
     Route::get('/gallery/edit/{id}', [ProgramController::class, 'edit'])->name('edit-gallery');
     Route::put('/gallery/edit/{id}', [ProgramController::class, 'update'])->name('update-gallery');
+    Route::get('/gallery/delete/{program}', [ProgramController::class, 'delete'])->name('delete-gallery');
+
     
 });

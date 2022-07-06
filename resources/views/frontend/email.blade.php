@@ -16,7 +16,7 @@
 
                 <p><span style="text-decoration:none;font-family:Verdana, Geneva, sans-serif;font-weight: bold; color: #3D3D3D;font-size: 15px"> Email : </span>{{ $data['email'] }}</p>
 
-                <p><span style="text-decoration:none;font-family:Verdana, Geneva, sans-serif;font-weight: bold; color: #3D3D3D;font-size: 15px"> Phone Number : </span>{{ $data['email'] }}</p>
+                <p><span style="text-decoration:none;font-family:Verdana, Geneva, sans-serif;font-weight: bold; color: #3D3D3D;font-size: 15px"> Phone Number : </span>{{ $data['number'] }}</p>
                 <p><span style="text-decoration:none;font-family:Verdana, Geneva, sans-serif;font-weight: bold; color: #3D3D3D;font-size: 15px"> City : </span>{{ $data['city'] }}</p>
 
            

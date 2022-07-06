@@ -101,6 +101,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>whatsapp  Number </label>
+                            <div>
+                                <input type="number" name="w_link" class="form-control" required
+                                    placeholder="Enter whatsapp number" value="{{ $about->w_link }}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Viber  Number </label>
+                            <div>
+                                <input type="number" name="v_link" class="form-control" required
+                                    placeholder="Enter viber number" value="{{ $about->v_link }}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="resume">Image</label>
                             <input type="file" name="image" class="form-control-file" id="hospital-img">
                             <img src="{{ asset('uploads/about/'.$about->image) }}" width="200px" alt="">

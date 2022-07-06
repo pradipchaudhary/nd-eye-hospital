@@ -20,48 +20,13 @@
   </head>
 
   <body>
-    <!-- :: Loading -->
-    <div class="loading">
-      <div class="display-table">
-          <div class="table-cell">
-              <div class="loading-box">
-                  <div class="loader">
-                      <div class="wave top-wave">
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                      </div>
-                      <div class="wave bottom-wave">
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
 
  <!-- === header === -->
  <header>
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-lg-4 col-sm-12 brand_logo">
-          <img class="" src="{{ asset('images/logo.png') }}" alt="" />
+          <a href="{{ url('/')}}"><img class="" src="{{ asset('images/logo.png') }}" alt="" /></a>
         </div>
         <div class="col-md-8 col-lg-8 col-sm-12 top_info">
           <div class="top_info_item address">
@@ -69,8 +34,8 @@
               <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="info">
-              <div>Milan Chowk purba line, Itahari</div>
-              <div class="title">Near Budhi Khola</div>
+              <div>Milan chowk, Purba Line, Itahari-4</div>
+              <div class="title">Near BudhiKhola</div>
             </div>
           </div>
 
@@ -79,8 +44,8 @@
               <i class="fa-regular fa-clock"></i>
             </div>
             <div class="info">
-              <div>Mon - Sat : 8.00 - 18.00</div>
-              <div class="title">Sunday Closed</div>
+              <div>Sun - Fri : 8:00 - 4:00 </div>
+              <div>Sat : 8:00 - 12:00</div>
             </div>
           </div>
           <div class="top_info_item">
@@ -88,7 +53,7 @@
               <i class="fa-regular fa-clock"></i>
             </div> -->
             <div class="info appointment">
-              <button>Appointment</button>
+              <button><a href="{{ url('/appointment') }}"> Fix an Appointment </a></button>
             </div>
           </div>
         </div>

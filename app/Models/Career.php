@@ -14,6 +14,12 @@ class Career extends Model
         'subject',
         'post',
         'description',
+        'position_id'
 
     ];
+    
+    public function position()
+    {
+        return $this->belongsTo(position::class);
+    }
 }

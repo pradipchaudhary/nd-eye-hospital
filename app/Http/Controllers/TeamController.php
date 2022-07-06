@@ -39,7 +39,7 @@ class TeamController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/team/', $filename);
+            $file->move('public/uploads/team/', $filename);
             $team->image = $filename;
         }
         $team->save();
@@ -65,7 +65,7 @@ class TeamController extends Controller
         if($request->hasfile('image'))
         {
 
-            $destination = 'upload/team'.$team->image;
+            $destination = 'public/uploads/team'.$team->image;
 
             if(File::exists($destination)){
                 File::delete($destination);
@@ -75,7 +75,7 @@ class TeamController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/team/', $filename);
+            $file->move('public/uploads/team/', $filename);
             $team->image = $filename;
         }
         $team->update();
@@ -84,7 +84,7 @@ class TeamController extends Controller
 
     public function delete($id){
         $team = Team::find($id);
-        $destination = 'uploads/team/'.$team->image;
+        $destination = 'public/uploads/team/'.$team->image;
 
         if(File::exists($destination)){
             File::delete($destination);

@@ -62,6 +62,11 @@
                                         data-original-title="Edit"><i
                                             class="mdi mdi-pencil font-size-18"></i></a>
                                     </button>
+                                    <button class="d-btn btn-danger  mr-2">
+                                        <a href="{{ route('delete-gallery', $item->id) }}" class="text-light"
+                                        data-toggle="tooltip" data-placement="top" title=""
+                                        data-original-title="Edit"><i class="mdi mdi-trash-can font-size-18"></i>
+                                    </button>
                                     
 
                                             </form>

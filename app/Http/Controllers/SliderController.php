@@ -21,6 +21,11 @@ class SliderController extends Controller
         return view('admin.slider.create');
     }
     public function store(Request $request){
+        $validated = $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
         // echo "<pre>";
         // print_r($request->all());
@@ -34,9 +39,8 @@ class SliderController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $name=$file->getClientOriginalName();
-
             $filename = $name.'.'.time().'.'.$extenstion;
-            $file->move('uploads/slider/', $filename);
+            $file->move('public/uploads/slider/', $filename);
             $slider->image = $filename;
         }
         $slider->save();

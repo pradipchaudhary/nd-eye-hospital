@@ -34,7 +34,7 @@ class DoctorsController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/doctor/', $filename);
+            $file->move('public/uploads/doctor/', $filename);
             $doctor->image = $filename;
         }
         $doctor->save();
@@ -59,7 +59,7 @@ class DoctorsController extends Controller
 
         if($request->hasfile('image'))
         {
-            $destination = 'upload/doctor'.$doctor->image;
+            $destination = 'public/upload/doctor'.$doctor->image;
 
             if(File::exists($destination)){
                 File::delete($destination);
@@ -69,7 +69,7 @@ class DoctorsController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/doctor/', $filename);
+            $file->move('public/uploads/doctor/', $filename);
             $doctor->image = $filename;
         }
         $doctor->save();
@@ -78,7 +78,7 @@ class DoctorsController extends Controller
 
     public function delete($id){
         $doctor = Doctors::find($id);
-        $destination = 'uploads/doctor/'.$doctor->image;
+        $destination = 'public/uploads/doctor/'.$doctor->image;
 
         if(File::exists($destination)){
             File::delete($destination);

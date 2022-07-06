@@ -6,7 +6,7 @@
 @include('inc.nav')
 <!-- === Second page  -->
 
-<section class="sec_page">
+<div class="sec_page">
     <div class="breadcrum">
       <div class="container">
         <div class="bread">
@@ -43,7 +43,7 @@
 
      
     </div>
-  </section>
+  </div>
 
 
 @include('inc.footer')

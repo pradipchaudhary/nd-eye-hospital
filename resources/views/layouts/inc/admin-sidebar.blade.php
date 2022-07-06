@@ -13,36 +13,14 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="menu-title">Information</li>
-                <li><a href="{{ route('about') }}" class="waves-effect">
-                    <i class='bx bx-hash'></i> <span> About </span></a>
-                </li>
-                <li><a href="{{ route('slider') }}" class="waves-effect">
-                    <i class='bx bx-images'></i> <span> Banners </span></a>
-                </li>
-
-                <li><a href="{{ route('service') }}" class="waves-effect">
-                    <i class='bx bx-hash'></i> <span> Services </span></a>
-                </li>
-                <li><a href="{{ route('specialities') }}" class="waves-effect">
-                    <i class='bx bx-hash'></i> <span> Specialities </span></a>
-                </li>
-
-                <li><a href="{{ route('news') }}" class="waves-effect">
-                    <i class='bx bx-news' ></i> <span> News & Event </span></a>
-                </li>
-                <li><a href="{{ route('testimonial') }}" class="waves-effect">
-                    <i class='bx bx-message-dots' ></i> <span> Testimonial </span></a>
-                </li>
-                <li><a href="{{ route('show-gallery') }}" class="waves-effect">
-                    <i class='bx bx-images'></i> <span> Gallery </span></a>
-                </li>
-
-                <li>
+               <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class='bx bx-buildings'></i>
                         <span>Hospital Info </span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('about') }}"> <i class='bx bx-hash' ></i> <span> About </span> </a></li>
+                    </ul>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('director') }}"> <i class='bx bx-hash' ></i> <span> Board of Directors</span> </a></li>
                     </ul>
@@ -56,21 +34,69 @@
                         <li><a href="{{ route('message') }}"> <i class='bx bx-message-dots' ></i> <span> Chairman </span> </a></li>
                     </ul>
                 </li>
-
-                {{-- Career Page  --}}
-                <li><a href="{{ route('career') }}" class="waves-effect">
-                    <i class='bx bx-message-dots' ></i> <span> Career </span></a>
+                <li><a href="{{ route('slider') }}" class="waves-effect">
+                    <i class='bx bx-images'></i> <span> Banners </span></a>
                 </li>
-          
+
+                <!--<li><a href="{{ route('service') }}" class="waves-effect">-->
+                <!--    <i class='bx bx-hash'></i> <span> Services </span></a>-->
+                <!--</li>-->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-question-mark"></i>
-                        <span> FAQ </span>
+                        <i class='bx bx-buildings'></i>
+                        <span>Service </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">FAQ List</a></li>
+                        <li><a href="{{ route('service') }}"> Service </span> </a></li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('category') }}">Add Category </span> </a></li>
+                    </ul>
+
                 </li>
+                
+                <li><a href="{{ route('specialities') }}" class="waves-effect">
+                    <i class='bx bx-hash'></i> <span> Specialities </span></a>
+                </li>
+
+                <li><a href="{{ route('news') }}" class="waves-effect">
+                    <i class='bx bx-news' ></i> <span> News & Event </span></a>
+                </li>
+                <li><a href="{{ route('testimonial') }}" class="waves-effect">
+                    <i class='bx bx-message-dots' ></i> <span> Testimonial </span></a>
+                </li>
+                <li><a href="{{ route('show-gallery') }}" class="waves-effect">
+                    <i class='bx bx-images'></i> <span> Gallery </span></a>
+                </li>
+                <li><a href="{{ route('publication') }}" class="waves-effect">
+                        <i class='bx bxs-book'></i> <span> Publication </span></a>
+                </li>
+
+                
+
+                {{-- Career Page  --}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class='bx bx-buildings'></i>
+                        <span>Career </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('career') }}">Jobs </span> </a></li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('view-cv') }}"> Resume </span> </a></li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('position.index') }}"> Position </span> </a></li>
+                    </ul>
+                    
+
+                </li>
+                <li><a href="{{ route('all-cv') }}" class="waves-effect">
+                        <i class='bx bxs-book'></i> <span> All CV </span></a>
+                </li>
+          
+                
             </ul>
         </div>
         <!-- Sidebar -->

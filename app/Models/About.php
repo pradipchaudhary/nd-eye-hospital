@@ -19,5 +19,7 @@ class About extends Model
         'fb_url',
         'tw_url',
         'in_url',
+        'w_link',
+        'v_link',
     ];
 }

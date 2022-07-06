@@ -59,7 +59,12 @@
 
                         <div class="form-group">
                             <label for="resume">Slider Image</label>
+                            <p class='text-danger'> The image maximum size is 2MB. </p>
                             <input type="file" name="image" class="form-control-file" id="notice-img">
+                     
+                             @if ($errors->has('image'))
+                                    <span class="text-danger">{{ $errors->first('image') }}</span>
+                                @endif
                         </div>
 
                         <div class="form-group mb-0">

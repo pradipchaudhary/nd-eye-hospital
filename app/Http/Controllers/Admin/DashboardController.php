@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $service = Services::all();
         $doctor = Doctors::all();
         $totalService = count($service);
-        $totoalDoctor = count($doctor);
-        return view('admin.dashboard', ['totalService' => $totalService, 'totalDoctor'=>$totoalDoctor]);
+        $totalDoctor = count($doctor);
+        return view('admin.dashboard', ['totalService' => $totalService, 'totalDoctor'=>$totalDoctor]);
     }
 }

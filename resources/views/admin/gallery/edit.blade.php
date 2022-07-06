@@ -56,7 +56,7 @@
                             <input type="file" name="image[]" class="form-control-file" id="notice-img" multiple>
                             @foreach ($programs->programPhotos as $key => $value)
                                 <div class="gallery_img_item">
-                                    <img src="{{ asset('uploads/gallery/'.$value->image) }}" width="200px" height="200" class="" alt="">
+                                    <img src="{{ asset('public/uploads/gallery/'.$value->image) }}" width="200px" height="200" class="" alt="">
                                 </div>
                             @endforeach
 

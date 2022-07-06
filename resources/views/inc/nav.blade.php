@@ -26,10 +26,10 @@
             <a class="text-capitalize @yield('careers')" href="{{ url('/careers') }}"> Career </a>
           </li>
           <li class="menu-item">
-            <a class="text-capitalize @yield('appointment')" href="{{ url('/appointment') }}">
-              Appointments
-            </a>
-          </li>
+                    <a class="text-capitalize @yield('publication')" href="{{ url('/publication') }}">
+                        Publication
+                    </a>
+                </li>
           <li class="menu-item">
             <a class="text-capitalize @yield('gallery')" href="{{ url('/gallery') }}"> Gallery </a>
           </li>
@@ -42,9 +42,14 @@
           </li>
         </ul>
         <div class="social__icons">
-          <a href="#"> <i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"> <i class="fa-brands fa-twitter"></i></a>
-          <a href="#"> <i class="fa-brands fa-instagram"></i> </a>
+             @foreach ($about as $item)
+            <a href="{{ $item->fb_url }}" target="_blank"> <i class="fa-brands fa-facebook-f"></i> </a>
+            <a href="{{ $item->tw_url }}" target="_blank"> <i class="fa-brands fa-twitter"></i> </a>
+            <a href="{{ $item->in_url }}" target="_blank"> <i class="fa-brands fa-instagram"></i> </a>
+            <a href="viber://add?number={{ $item->v_link}}" target="blank"><i class="fa-brands fa-viber"></i></a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{ $item->w_link}}"><i class="fa-brands fa-whatsapp"></i></a>
+        
+          @endforeach
         </div>
       </div>
       <div class="menu-btn"></div>

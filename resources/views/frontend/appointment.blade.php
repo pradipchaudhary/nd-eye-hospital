@@ -26,15 +26,16 @@
           </div>
           <div class="container mt-5">
             <div class="row">
-              <div class="col-9">
+              <div class="col-md-9">
                 <h4 class="sub-title">We are here to help</h4>
-                <h2 class="title">Find an <span> Eye doctors </span></h2>
+                <h2 class="title">Find an Eye Doctor. </h2>
                 <p>
                   Please fill in your details below and we will contact you as
                   soon as possible.
                 </p>
                 <div class="mt-4">
-                  <form action="">
+                  <form action="{{route('appointment-submit')}}" method="POST">
+                      @csrf
                     <div class="form-row row">
                       <div class="col-md-5 mb-3">
                         <label for="validationDefault01">Full name </label>
@@ -43,6 +44,7 @@
                           class="form-control"
                           id="validationDefault01"
                           placeholder="Full name"
+                          name="name"
                           value=""
                           required
                         />
@@ -53,6 +55,7 @@
                           type="text"
                           class="form-control"
                           id="validationDefault02"
+                          name="number"
                           placeholder="Contact Number"
                           value=""
                           required
@@ -65,6 +68,7 @@
                           type="text"
                           class="form-control"
                           id="validationDefault02"
+                          name="state"
                           placeholder="State"
                           value=""
                           required
@@ -77,6 +81,7 @@
                           class="form-control"
                           id="validationDefault02"
                           placeholder="City "
+                          name="city"
                           value=""
                           required
                         />
@@ -88,6 +93,7 @@
                           class="form-control"
                           id=""
                           cols="30"
+                          name="message"
                           rows="10"
                           placeholder="Message "
                         ></textarea>
@@ -97,8 +103,22 @@
                   </form>
                 </div>
               </div>
-              <div class="col-3 appointment_sidebar">
-                <h2 class="heading">24*7 Eyecare helpline</h2>
+              <div class="col-md-3 appointment_sidebar">
+                  <div class="card py-4 px-4">
+                    <!--<h2 class="heading">24*7 Eyecare helpline</h2>-->
+                    <h4 class="text-center"> 24*7 Eyecare helpline </h4>
+                    <hr>
+                    <b> Phone No.:</b>
+                    <span>
+                        977-025-581381, 9862633964
+                    </span>
+                    <br>
+                    <b> Email : </b>
+                    <span> navadristieye@gmail.com </span>
+                    <br>
+                    <br>
+                    <i style="font-size:14px"> Tahnk you for your continuous support and faith on Us !!</i>
+                  </div>
               </div>
             </div>
           </div>

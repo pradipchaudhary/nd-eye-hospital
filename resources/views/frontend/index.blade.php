@@ -5,54 +5,93 @@
 @include('inc.nav')
 
 {{-- content start  --}}
-<!-- ============ hero  =========== -->
-{{-- banner --}}
+
 <div id="banner">
     <div class="owl-carousel banner owl-theme">
-        @foreach ($slider as $item)
-
-        <div class="item">
-            <img
-            src="{{ asset('uploads/slider/'. $item->image ) }}"
-            class="d-block w-100"
-            alt="..."
-            />
-        </div>
+       @foreach ($slider as $item)
+                <div class="item" style="
+            background-image: linear-gradient(
+                to right,
+                rgb(23 61 98 / 20%),
+                rgb(23 61 98 / 20%)
+              ),
+              url('{{ asset('uploads/slider/'. $item->image ) }}');
+          ">
+                   
+                </div>
+            
         @endforeach
-
+   
     </div>
+</div>
 </div>
 
 
-  <!-- about section -->
-  
-  <section id="about__section">
-    <div class="mycontainer">
-      <div class="container">
-        @foreach ($about as $item )
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-sm-12">
-           <div class="about_img">
-             <img src="{{ asset('uploads/about/'. $item->image ) }}" alt="">
-           </div>
-          </div>
-          <div class="col-lg-7 col-md-7 col-sm-12">
-            <div class="about_des">
-              <h2> Welcome to</h2>
-              <h6 class="mb-3"> {{ $item->title }} </h6>
-              <div class="des limit-about">
-                {!! $item->description !!}
+  <!-- Book Appointment -->
+  <section class="book_appointment py-4">
+      <div class="container py-3">
+          <div class="row">
+              <div class="col-md-6">
+                  <h1>24*7 Eye Care Helpline </h1>
               </div>
-              <div class="cat mt-4">
-                <a href="{{ url('/about') }}"> <span> Read more  </span> <i class="fa-solid fa-arrow-right"></i> </a>
-              </div>
-            </div>
-            </div>  
-        </div>
-        @endforeach
+              <div class="col-md-6 text-end">
+                  <div class="phone-n">
+                      <h4> +977 9862 633 964  </h4>
+      <span> 24 Hours Emergency Services</span>
       </div>
-    </div>
+              </div>
+          </div>
+      </div>
+
   </section>
+
+  <!-- about section -->
+    <section id="about__section">
+        <div class="mycontainer">
+            <div class="container">
+                @foreach ($about as $item)
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-12">
+                            <div class="about_img">
+                                <img src="{{ asset('uploads/about/' . $item->image) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-12">
+                            <div class="about_des">
+                                <h2> Welcome to Nava Dristi Eye Hospital </h2>
+                                {{-- <h6 class="mb-3"> {{ $item->title }} </h6> --}}
+                                <div class="des limit-about">
+                                    {!! $item->description !!}
+                                </div>
+                                <div class="mt-3">
+
+                                    <a class="cat read_btn" href="{{ url('/about') }}"> <span> Read more </span>
+                                        <i class="fa-solid fa-arrow-right"></i> </a>
+
+
+                                    <div class="video">
+                                        <a id="play-video" class="video-play-button cat video_btn" href="#">
+                                            <!--<span> </span>-->
+                                            Watch Video <span> <i class="fa-solid fa-circle-play"></i> </span>
+
+                                        </a>
+
+                                        <div id="video-overlay" class="video-overlay">
+                                            <a class="video-overlay-close">&times;</a>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
   
 
   
@@ -60,7 +99,7 @@
   <!-- === Service Section === -->
   <section id="services">
     <div class="container">
-      <h1 class="">Our <span> Specilities  </span></h1>
+      <h1 class="">Our <span> Specialities  </span></h1>
       <div class="separator">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -81,8 +120,8 @@
 
                 </div>
                 <h2>{{ $item->name }}</h2>
-                <p class="limit-description">
-                {{ $item->description }}
+                <p class="limit-service">
+                {!! $item->description !!}
                 </p>
                 <a href="{{ route('specialities-detail',$item->id) }}"> Read More <i class="fa-solid fa-arrow-right"></i></a>
               </div>
@@ -97,6 +136,7 @@
   </section>
 
 
+
   {{-- Message from Chair Man Section --}}
   <section id="message_from">
     <div class="container">
@@ -104,7 +144,7 @@
      <div class="message_from">
       <div class="message_detail">
         <div class="row d-flex align-items-center">
-          <div class="col-md-4">
+          <div class="col-md-5">
             <div class="message_from_img">
               @if($item->photo)
                 <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
@@ -113,11 +153,11 @@
               @endif
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-7">
             <div class="message_from_detail">
               <h4 class="name"> {{ $item->name }} </h4>
               <div class="position"> {{ $item->position }} </div>
-              <div class="mt-3 limit-description des">
+              <div class="mt-3 limit-message des">
                   {!! $item->message !!}
               </div>
               <button class="message_from_cat mt-3" data-bs-toggle="modal"
@@ -148,7 +188,7 @@
                             <div class="col-md-4 left_box">
                               <div class="imgbox">
                                 @if($item->photo)
-                                  <img src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
+                                  <img class="mw-100" src="{{ asset('uploads/message/'.$item->photo) }}" alt="Images" />
                                 @else
                                     <img src="{{ asset('images/default.png') }}" />
                                 @endif
@@ -179,16 +219,7 @@
     </div>
   
 </section>
-  <!-- Book Appointment -->
-  <section class="book_appointment">
-    <div class="container appointment_info">
-      <h1>24*7 Eyecare Helpline </h1>
-      <div class="phone-n">
-        025-581381 <span> 24 Hours Emergency Services</span>
-      </div>
-    </div>
-  </section>
-
+  
   
     <!-- News and Events   -->
     <section class="carousel_se_02 news__events">
@@ -196,7 +227,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12 text-center wow fadeInUp">
-              <h2>News &  Update</h2>
+              <h2> News / Update / Highlight </h2>
               <div class="separator">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -205,12 +236,12 @@
             </div>
             <div class="col-md-12 pt-0">
               <div class="owl-carousel news_events owl-theme">
-                <!-- 01 -->
-                @foreach ($news as $item)
-
+          
+                @foreach ($news as $key => $item)
+                @if($key < 3)
                 <div class="item">
                   <div class="col-sm-12 wow fadeInUp delay-1">
-                    <div class="">
+                    <div class="news_inner_section">
                       <div class="news-img hover15">
                         <img
                         src="{{ asset('uploads/news/'.$item->image) }}"
@@ -218,24 +249,28 @@
                         />
                       </div>
                       <div class="inner_info">
+                          <span class="date"> {{ $item->created_at }}</span>
                         <h1>
                           <a href="{{ route('news-detail',$item->id) }}">
                           <span class="limit-title">  {{ $item->title }} </span>
                           </a>
 
                         </h1>
-                        <span class="date"> {{ $item->created_at }}</span>
-                        <p class="limit-description">
-                          {{ $item->description }}
-                        </p>
+                        
+                        <div class="news-des">
+               
+                        <!--{!! Str::limit($item->description, 50) !!}-->
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                @endif
+               
                 @endforeach
 
 
-                <!-- 01 -->
+      
 
               </div>
             </div>
@@ -244,10 +279,10 @@
           </div>
           </div>
 
-          <!-- our clients -->
         </div>
       </div>
     </section>
+
 
     <!-- ==== Testimonials ====== -->
     <div id="testimonials">
@@ -281,7 +316,7 @@
                   </div>
                   <div class="testimonial-content quote">
                   <i class="fa fa-quote-left"> </i>
-                      {{ $item->description }}
+                      {!! $item->description !!}
                   </div>
               </div>
               @endforeach

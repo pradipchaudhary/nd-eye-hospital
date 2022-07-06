@@ -29,6 +29,13 @@ class ContactMail extends Mailable
      */
     public function build()
     {
+        
+        if(array_key_exists("state",$this->data))
+        {
+            return $this->view('frontend.appointment_email',[
+                'data' => $this->data
+                ]);
+        }
         return $this->view('frontend.email')
             ->subject('Feedback')
             ->from($this->data['email'], 'system')

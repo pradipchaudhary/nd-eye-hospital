@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Models\programPhoto;
 use Illuminate\Http\Request;
+use File;
+
 
 class ProgramController extends Controller
 {
@@ -36,7 +38,7 @@ class ProgramController extends Controller
             $images = $request->file('image');
             foreach ($images as $image) {
                 $name = $image->getClientOriginalName();
-                $path =  $image->move('uploads/gallery/', $name);
+                $path =  $image->move('public/uploads/gallery/', $name);
                 programPhoto::create([
                     'program_id' => $id,
                     'image' => $name
@@ -63,7 +65,7 @@ class ProgramController extends Controller
                 $images = $request->file('image');
                 foreach ($images as $image) {
                     $name = $image->getClientOriginalName();
-                    $path =  $image->move('uploads/gallery/', $name);
+                    $path =  $image->move('public/uploads/gallery/', $name);
                     programPhoto::create([
                         'program_id' => $id,
                         'image' => $name
@@ -71,6 +73,20 @@ class ProgramController extends Controller
                 }
             }
         }
+        return redirect()->back();
+    }
+    
+    public function delete(Program $program)
+    {
+        $program=$program->load('programPhotos');
+        foreach($program->programPhotos as $key=> $value){
+           
+              if (File::exists(public_path('uploads/gallery/' . $value->image))) {
+                File::delete(public_path('uploads/gallery/' . $value->image));
+            }
+            $value->delete();
+        }
+        $program->delete();
         return redirect()->back();
     }
 }

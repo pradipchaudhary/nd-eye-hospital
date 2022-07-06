@@ -26,7 +26,7 @@
             <div class="row">
                 <h2> {{ $specialities->name }}</h2>
                 <div class="imgbox">
-                    <img class="mw-100" src="{{ asset('uploads/specialities/'.$specialities->image) }}" alt="">
+                    <img class="w-30" src="{{ asset('uploads/specialities/'.$specialities->image) }}" alt="">
                 </div>
                 <div class="mt-4">
                     <p>
@@ -34,7 +34,7 @@
                     </p>
                 </div>
                 <div class="mt-4">
-                    <h4> Symtoms </h4>
+                    <h4> Symptoms </h4>
                     <p>
                         {!! $specialities->symptoms !!}
                     </p>

@@ -32,12 +32,10 @@
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-9 col-sm-12">
-          <h4 class="sub-title">Happy to Help</h4>
-          <h2 class="title">Share Your <span> Experience </span></h2>
+          <h2 class="title">Share Your  Experience</h2>
           <p>
-            There are special moments happening every dy throughout ASG Eye
-            Hospital. Whether you are a patient or family member who has
-            experienced our case. We want to hear from you !!
+            There are special moments happening every day throughout ND Eye
+            Hospital. Whether you are a patient or family member, we want to hear from you !!
           </p>
           <div class="mt-4">
             @if (session('status'))
@@ -117,17 +115,17 @@
           <div class="contact_sidebar">
             <h2 class="heading">Additional Contacts</h2>
             <p>
-              You may also contact he executive below to register a
+              You may also contact the executive below to register a
               complaint if you are not satisfied with our response:
             </p>
             <div class="">
               Eamil: <br />
-              <span> info@info.com</span>
+              <span> navadristieye@gmail.com</span>
             </div>
-            <div class="">Phone No: <br /><span> info@info.com</span></div>
+            <div class="">Phone No: <br /><span> +977-025-581381, 9862633964</span></div>
             <br />
             <p class="thankyou">
-              Tahnk you for your continuous support and faith on Us !!
+              Thank you for your continuous support and faith on Us !!
             </p>
           </div>
         </div>

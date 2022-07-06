@@ -50,6 +50,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                                <label for="category">Select Category </label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="">{{ __('select category') }}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category')
+                                    <h6 class="alert alert-success">
+                                        {{ $message }}
+                                    </h6>
+                                @enderror
+                            </div>
+                        <div class="form-group">
                             <label> Description</label>
                             <div>
                                     <textarea name="description" id="summernote1" rows="10" class="form-control"></textarea>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Services;
 // use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
@@ -19,22 +20,28 @@ class ServiceController extends Controller
 
 
     public function index(){
-        // dd('hello ');
-        $service = Services::all();
-        // dd($service);
-        return view('admin.service.index', compact('service'));
+        // $service = Services::all();
+        // return view('admin.service.index', compact('service'));
+        $services = Services::query()->with('Categories')->get();
+        return view('admin.service.index', compact('services'));
     }
 
     public function create(){
-        return view('admin.service.create');
+        return view('admin.service.create', [
+            'categories' => Category::query()->get()
+        ]);
     }
 
     public function store(Request $request){
 
-        // echo "<pre>";
-        // print_r($request->all());
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
         $service = new Services;
         $service->title = $request->input('title');
+        $service->category_id = $request->input('category');
         $service->description = $request->input('description');
 
         // $service->image = $request->input('image');
@@ -43,11 +50,11 @@ class ServiceController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/service/', $filename);
+            $file->move('public/uploads/service/', $filename);
             $service->image = $filename;
         }
         $service->save();
-        return redirect()->back()->with('status','Service Add Successfully');
+        return redirect()->route('service')->with('status','Service Add Successfully');
 
     }
 
@@ -55,14 +62,23 @@ class ServiceController extends Controller
 
 
     public function edit($id){
-        // dd($id);
-        $service = Services::find($id);
+        $service = Services::query()->where('id', $id)->with('categories')->first();
         // dd($service);
-        return view('admin.service.edit', compact('service'));
+        return view('admin.service.edit', [
+            'categories' => Category::query()->get(),
+            'service' => $service
+        ]);
     }
     public function update(Request $request, $id){
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
+        
         $service = Services::find($id);
         $service->title = $request->input('title');
+        $service->category_id = $request->input('category');
         $service->description = $request->input('description');
 
         // Update images
@@ -78,16 +94,16 @@ class ServiceController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/service/', $filename);
+            $file->move('public/uploads/service/', $filename);
             $service->image = $filename;
         }
         $service->update();
-        return redirect()->back()->with('status','Service Update Successfully');
+        return redirect()->route('service')->with('status','Service Update Successfully');
     }
 
     public function delete($id){
         $service = Services::find($id);
-        $destination = 'uploads/service/'.$service->image;
+        $destination = 'public/uploads/service/'.$service->image;
 
         if(File::exists($destination)){
             File::delete($destination);

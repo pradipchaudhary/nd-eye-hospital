@@ -5,7 +5,7 @@
 @include('inc.header')
 @include('inc.nav')
 
-<section class="sec_page">
+<div class="sec_page">
     <div class="breadcrum">
       <div class="container">
         <div class="bread">
@@ -23,6 +23,9 @@
       <div class="container gallery_container">
         <div class="row">
           {{-- gallery item --}}
+          @if (count($gallery) == 0)
+              <div class="text-danger text-center"> No Gallery available now.  </div>
+            @else
           @foreach ($gallery as $item)
             
           <div class="col-md-4 text-center">
@@ -30,7 +33,7 @@
               <div class="gallery_img_box">
                 <a href="{{ route('sub-gallery',$item->id) }}" class="features_image">
                   @foreach ($item->programPhotos as $value)
-                  <img src="{{ asset('uploads/gallery/'.$value->image) }}" alt="">
+                  <img src="{{ asset('public/uploads/gallery/'.$value->image) }}" alt="">
                   @break
                   @endforeach
                   
@@ -43,12 +46,13 @@
           </div> 
           {{-- // end gallery  --}}
           @endforeach
+          @endif
 
           
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-
+</div>
 @include('inc.footer')

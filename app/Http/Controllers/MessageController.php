@@ -36,7 +36,7 @@ class MessageController extends Controller
         $message->message = $data['message'];
 
         if ($request->hasfile('photo')) {
-            $destination = 'uploads/message' . $message->photo;
+            $destination = 'public/uploads/message' . $message->photo;
 
             if (File::exists($destination)) {
                 File::delete($destination);
@@ -46,7 +46,7 @@ class MessageController extends Controller
             $file = $request->file('photo');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extenstion;
-            $file->move('uploads/message/', $filename);
+            $file->move('public/uploads/message/', $filename);
             $message->photo = $filename;
         }
         $message->save();

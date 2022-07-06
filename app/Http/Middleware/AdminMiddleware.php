@@ -17,14 +17,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // if (Auth::check()) {
-            if (Auth::user()->role_as == '1') { // 1 = Admin | 0 = simple user
-                return $next($request);
-            } else {
-                return redirect('/home')->with('status', 'Access Denied  ! As you are not an Admin ');
-            }
-        // } else {
-        //     return redirect('/login')->with('status', 'Please Login First');
+        // dd($request->session()->has('is_logged_in'));
+        //   if(!$request->session()->has('is_logged_in')){
+        //     $request->session()->flash('msg','Access Denied');
+        //     return redirect('/login');
         // }
+        return $next($request);
     }
 }

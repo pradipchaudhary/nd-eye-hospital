@@ -23,14 +23,21 @@
     <div class="sec_page_body py-5">
       <div class="container">
         <div class="row">
-            @foreach ($service as $item)
-                <div class="col-12">
-                    <h4> {{ $item->title  }}</h4>
-                    <p>
-                        {!! $item->description !!}
-                    </p>
-                </div>
-            @endforeach
+            @foreach ($category as $item)
+                    <div class="col-12 services_item">
+                        <h4> {{ $item->name }}</h4>
+                        <ul>
+                            @foreach ($item->services as $value)
+                                <li>
+                                    <a href="{{ route('service-detail', $value->title) }}">
+                                        {!! $value->title !!}
+                                    </a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                @endforeach
 
         </div>
       </div>

@@ -25,7 +25,7 @@
             <div class="col">
                 <h2 class=""> {{ $news->title }} </h2>
                 <img class="mw-100" src="{{ asset('uploads/news/'.$news->image) }}" alt="">
-                <p class="mt-4">{{ $news->description }}</p>
+                <p class="mt-4">{!! $news->description !!}</p>
             </div>
 
         </div>

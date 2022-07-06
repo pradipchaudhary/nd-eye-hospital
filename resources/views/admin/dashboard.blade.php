@@ -67,7 +67,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Number of Doctor </p>
-                                    <h4 class="mb-0">{{ $totalService }}</h4>
+                                    <h4 class="mb-0">{{ $totalDoctor }}</h4>
                                 </div>
 
                                 <div

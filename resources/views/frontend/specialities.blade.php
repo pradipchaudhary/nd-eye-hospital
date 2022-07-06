@@ -26,7 +26,7 @@
             <!-- Item one  -->
             @foreach ($specialities as $speciality)
               <div class="row spec_item">
-                <div class="col-3 ">
+                <div class="col-md-3 ">
                   <div class="spec_item_left">
                     <div class="imgBox">
                       @if($speciality->image)
@@ -37,7 +37,7 @@
                     </div>
                   </div> 
                 </div>
-                <div class="col-9 spec_item_right">
+                <div class="col-md-9 spec_item_right">
                   <h4>{{ $speciality->name }}</h4>
                   <p>
                     {!!  $speciality->description !!}

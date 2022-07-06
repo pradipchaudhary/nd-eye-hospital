@@ -40,7 +40,7 @@ class SpecialitiesController extends Controller
             $file = $request->file('icon');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extenstion;
-            $file->move('uploads/specialities/', $filename);
+            $file->move('public/uploads/specialities/', $filename);
             $specialities->icon = $filename;
         }
 
@@ -49,7 +49,7 @@ class SpecialitiesController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extenstion;
-            $file->move('uploads/specialities/', $filename);
+            $file->move('public/uploads/specialities/', $filename);
             $specialities->image = $filename;
         }
         $specialities->save();
@@ -85,7 +85,7 @@ class SpecialitiesController extends Controller
             $file = $request->file('icon');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extenstion;
-            $file->move('uploads/specialities/', $filename);
+            $file->move('public/uploads/specialities/', $filename);
             $specialities->icon = $filename;
         }
         // else{
@@ -104,7 +104,7 @@ class SpecialitiesController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extenstion;
-            $file->move('uploads/specialities/', $filename);
+            $file->move('public/uploads/specialities/', $filename);
             $specialities->image = $filename;
         }
         $specialities->update();
@@ -115,14 +115,14 @@ class SpecialitiesController extends Controller
     public function delete($id)
     {
         $specialities = Specialities::find($id);
-        $destinationicon = 'uploads/specialities/' . $specialities->icon;
+        $destinationicon = 'public/uploads/specialities/' . $specialities->icon;
 
         if (File::exists($destinationicon)) {
             File::delete($destinationicon);
         }
 
 
-        $destination = 'uploads/specialities/' . $specialities->image;
+        $destination = 'public/uploads/specialities/' . $specialities->image;
 
         if (File::exists($destination)) {
             File::delete($destination);

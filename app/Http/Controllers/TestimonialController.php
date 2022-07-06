@@ -21,8 +21,8 @@ class TestimonialController extends Controller
     // Store
     public function store(Request $request){
 
-        echo "<pre>";
-        print_r($request->all());
+        // echo "<pre>";
+        // print_r($request->all());
         $testimonial = new Testimonial;
         $testimonial->name = $request->input('name');
         $testimonial->position = $request->input('position');
@@ -34,7 +34,7 @@ class TestimonialController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/testimonial/', $filename);
+            $file->move('public/uploads/testimonial/', $filename);
             $testimonial->image = $filename;
         }
         $testimonial->save();
@@ -67,7 +67,7 @@ class TestimonialController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('uploads/testimonial/', $filename);
+            $file->move('public/uploads/testimonial/', $filename);
             $testimonial->image = $filename;
         }
         $testimonial->update();
@@ -76,7 +76,7 @@ class TestimonialController extends Controller
 
     public function delete($id){
         $testimonial = Testimonial::find($id);
-        $destination = 'uploads/testimonial/'.$testimonial->image;
+        $destination = 'public/uploads/testimonial/'.$testimonial->image;
 
         if(File::exists($destination)){
             File::delete($destination);

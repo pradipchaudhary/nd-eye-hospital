@@ -9,22 +9,34 @@ use Illuminate\Support\Facades\File;
 
 class DirectorsController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // dd("Hello");
         $director = Directors::all();
         return view('admin.director.index', compact('director'));
-
     }
     // Create
-    public function create(){
+    public function create()
+    {
         return view('admin.director.create');
     }
 
     // Store
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         // echo "<pre>";
         // print_r($request->all());
+
+        // $validated = $request->validate([
+        //     'name' => 'required',
+        //     'position' => 'required',
+        //     'description' => 'required',
+        //     'fb_url' => 'required|url',
+        //     'tw_url' => 'required|url',
+        //     'in_url' => 'required|url',
+        // ]);
+
         $director = new Directors;
         $director->name = $request->input('name');
         $director->position = $request->input('position');
@@ -34,29 +46,29 @@ class DirectorsController extends Controller
         $director->in_url = $request->input('twitter');
 
         // $service->image = $request->input('image');
-        if($request->hasfile('image'))
-        {
+        if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extenstion;
-            $file->move('uploads/director/', $filename);
+            $filename = time() . '.' . $extenstion;
+            $file->move('public/uploads/director/', $filename);
             $director->image = $filename;
         }
         $director->save();
-        return redirect()->back()->with('status','Director Add Successfully');
-
+        return redirect()->back()->with('status', 'Director Add Successfully');
     }
-    public function edit($id){
+    public function edit($id)
+    {
         // dd($id);
         $director = Directors::find($id);
         // dd($news);
         return view('admin.director.edit', compact('director'));
     }
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
-        $validate= $request->validate([
-            'name'=>'required',
-            'position'=>'required',
+        $validate = $request->validate([
+            'name' => 'required',
+            'position' => 'required',
 
 
         ]);
@@ -69,35 +81,34 @@ class DirectorsController extends Controller
         $director->in_url = $request->input('twitter');
 
         // Update images
-        if($request->hasfile('image'))
-        {
+        if ($request->hasfile('image')) {
 
-            $destination = 'upload/director'.$director->image;
+            $destination = 'public/upload/director' . $director->image;
 
-            if(File::exists($destination)){
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
 
 
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extenstion;
-            $file->move('uploads/director/', $filename);
+            $filename = time() . '.' . $extenstion;
+            $file->move('public/uploads/director/', $filename);
             $director->image = $filename;
         }
         $director->update();
-        return redirect()->back()->with('status','Director Update Successfully');
+        return redirect()->back()->with('status', 'Director Update Successfully');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $director = Directors::find($id);
-        $destination = 'uploads/director/'.$director->image;
+        $destination = 'public/uploads/director/' . $director->image;
 
-        if(File::exists($destination)){
+        if (File::exists($destination)) {
             File::delete($destination);
         }
         $director->delete();
-        return redirect()->back()->with('status','Director Delete Successfully');
-
+        return redirect()->back()->with('status', 'Director Delete Successfully');
     }
 }

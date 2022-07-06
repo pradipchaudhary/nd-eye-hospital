@@ -46,11 +46,11 @@
                 <div class="member_position">{{ $item->position }}</div>
                 {{-- !-- Button trigger modal --> --}}
                 <button class="board-member-cat" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal{{ $item->id }}">
+                    data-bs-target="#exampleModalb{{ $item->id }}">
                     View More
                 </button>
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                <div class="modal fade" id="exampleModalb{{ $item->id }}" tabindex="-1"
                   aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl">
                       <div class="modal-content">
@@ -64,7 +64,7 @@
                                   <div class="row">
                                     <div class="col-md-4 left_box">
                                       <div class="imgbox">
-                                        <img src="{{ asset('uploads/director/'.$item->image) }}" alt="">
+                                        <img class="w-100" src="{{ asset('uploads/director/'.$item->image) }}" alt="">
                                       </div>
                                     </div>
                                     <div class="col-md-8 right_box">
@@ -110,7 +110,7 @@
             <!-- board member  -->
             @foreach ($team as $item)
 
-            <div class="col-md-3">
+            <div class="col-md-3 mt-4">
               <div class="team_member_item">
                 <div class="team_member_img">
                   <img src="{{ asset('uploads/team/'.$item->image) }}" alt="" />
@@ -137,14 +137,14 @@
                                   <div class="row">
                                     <div class="col-md-4 left_box">
                                       <div class="imgbox">
-                                        <img src="{{ asset('uploads/team/'.$item->image) }}" alt="">
+                                        <img class="w-100" src="{{ asset('uploads/team/'.$item->image) }}" alt="">
                                       </div>
                                     </div>
                                     <div class="col-md-8 right_box">
                                       <h4> {{ $item->name }}</h4>
                                       <div class="team_member_position">{{ $item->position }}</div>
                                       <p class="mt-4 pr-4">
-                                        {{ $item->description }}
+                                        {!! $item->description !!}
 
                                       </p>
                                       <div class="social_link pb-5">
