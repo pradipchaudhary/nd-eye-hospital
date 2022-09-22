@@ -1,13 +1,57 @@
+
+
+// Pre-loader 
+var loader = document.querySelector('.loader');
+
+window.addEventListener('load', function(){
+  loader.classList.add('disppear');
+})
+
+// Back to Top 
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// Fix on Scrolling
+window.onscroll = function(){
+  fixNav();
+}
+
+let navbar = document.querySelector("#nav");
+let sticky = navbar.offsetTop;
+
+function fixNav(){
+  if(window.pageYOffset > sticky ){
+    navbar.classList.add("sticky");
+  }
+  else{
+    navbar.classList.remove("sticky");
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
 // Submenu
 $(document).ready(function () {
   $(".sub-btn").click(function () {
     $(this).next(".sub-menu").slideToggle();
   });
 });
-// :: Loading
-$(window).on("load", function () {
-  $(".loading").fadeOut();
-});
+
+
 // :: Scroll Smooth To Go Section
 $(".move-section").on("click", function (e) {
   e.preventDefault();
@@ -52,8 +96,8 @@ $(document).ready(function () {
 $(document).ready(function () {
   $(".limit-about").each(function (i) {
     var len = $(this).text().trim().length;
-    if (len > 500) {
-      $(this).text($(this).text().substr(0, 500) + "...");
+    if (len > 400) {
+      $(this).text($(this).text().substr(0, 400) + "...");
     }
   });
 });
@@ -261,3 +305,5 @@ function customPopup() {
   });
 }
 customPopup();
+
+

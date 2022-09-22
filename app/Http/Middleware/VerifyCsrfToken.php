@@ -12,10 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'login',
-        'admin/team/create',
-        'admin/team/edit.*',
-        'admin/slider/create',
-        'admin/slider/edit/{id}'
+        '/checkout_submit'
     ];
 }

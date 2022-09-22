@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\File;
 class NewsController extends Controller
 {
     public function index(){
-        // dd("Hello");
         $news = News::all();
         // dd($news);
         $news = News::orderBy('created_at','DESC')->get();
@@ -24,9 +23,6 @@ class NewsController extends Controller
 
     // Store
     public function store(Request $request){
-
-        // echo "<pre>";
-        // print_r($request->all());
         $news = new News;
         $news->title = $request->input('title');
         $news->description = $request->input('description');
@@ -37,7 +33,7 @@ class NewsController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('public/uploads/news/', $filename);
+            $file->move('uploads/news/', $filename);
             $news->image = $filename;
         }
         $news->save();
@@ -59,7 +55,7 @@ class NewsController extends Controller
         if($request->hasfile('image'))
         {
 
-            $destination = 'public/uploads/news'.$news->image;
+            $destination = 'uploads/news'.$news->image;
 
             if(File::exists($destination)){
                 File::delete($destination);
@@ -69,7 +65,7 @@ class NewsController extends Controller
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
-            $file->move('public/uploads/news/', $filename);
+            $file->move('uploads/news/', $filename);
             $news->image = $filename;
         }
         $news->update();

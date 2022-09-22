@@ -21,8 +21,10 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- App Css-->
     <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" /> --}}
 </head>
 <body data-sidebar="dark">
+    @include('sweetalert::alert')
     {{-- Include Loading --}}
     @include('layouts.inc.loading');
 
@@ -91,5 +93,6 @@
         });
     });
 </script>
+@yield('scripts')
 </body>
 </html>

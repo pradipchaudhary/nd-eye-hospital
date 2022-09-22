@@ -50,8 +50,8 @@
                                             class="fa-brands fa-facebook-f"></i> </a>
                                 </li>
                                 <li>
-                                    <a href="{{ $item->tw_url }}" target="_blank"> <i
-                                            class="fa-brands fa-twitter"></i> </a>
+                                    <a href="{{ $item->tw_url }}" target="_blank"> <i class="fa-brands fa-twitter"></i>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="{{ $item->in_url }}" target="_blank"> <i
@@ -92,12 +92,11 @@
         </div>
     </div>
     <!-- :: Scroll Up -->
-    <div class="scroll-up">
+    {{-- <div class="scroll-up">
         <a href="#page" class="move-section">
-            {{-- <i class="fas fa-angle-up"></i> --}}
             <i class="fa-solid fa-arrow-up-to-line"></i>
         </a>
-    </div>
+    </div> --}}
 
     <!-- Script Include -->
 
@@ -114,6 +113,13 @@
                 enabled: true
             }
         });
+
+        function openModal() {
+            $('#checkoutModal').modal('show');
+        }
+        function closeModal() {
+            $('#checkoutModal').modal('hide');
+        }
     </script>
 
     </body>

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'ND') }}</title> --}}
-    <title> Login </title>
+    <title> @yield('title') </title>
 
 
 
@@ -25,6 +25,7 @@
     <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    @include('sweetalert::alert')
     <div id="app">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -84,7 +85,7 @@
 
 
 
-                           
+
                         @endguest
 
                     </ul>
@@ -105,6 +106,7 @@
 <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <!-- Datatable init js -->
 <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+@yield('scripts')
 
 <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
