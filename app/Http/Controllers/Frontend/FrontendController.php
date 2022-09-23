@@ -34,7 +34,6 @@ class FrontendController extends Controller
 {
     public function index()
     {
-
         if (Visitor::query()->where('ip', request()->ip())->count() == 0) {
             visitor::create(['ip' => request()->ip()]);
         }
@@ -74,7 +73,8 @@ class FrontendController extends Controller
     }
     // Our Team 
 
-    public function team(){
+    public function team()
+    {
         // $news=News::query()->get();
         $board = Directors::query()->get();
         $about = About::query()->get();
@@ -135,7 +135,7 @@ class FrontendController extends Controller
         $about = About::query()->get();
         return view('frontend.appointment', ['about' => $about]);
     }
-    
+
     public function appointment_submit(Request $request)
     {
         $data = $request->validate([
@@ -144,7 +144,7 @@ class FrontendController extends Controller
             'state' => 'required',
             'city' => 'required'
         ]);
-        
+
         $email = MailInfo::first();
         try {
 
@@ -165,7 +165,7 @@ class FrontendController extends Controller
     public function careers()
     {
         $career = Career::query()->with('position')->latest()->get();
-        
+
         $position = position::query()->with('career')->get();
         // dd()
         $about = About::query()->get();
@@ -257,7 +257,7 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
-   public function cvcreate(Request $request)
+    public function cvcreate(Request $request)
     {
         // dd($request->all());
         $request->validate([

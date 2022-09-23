@@ -99,18 +99,15 @@
                         </div>
                     </div>
                     <div class="top-cart">
-                        @if (auth()->user() !=null)
-
-                        <div class="order-cart">
-                            <a href="{{ route('package.cart_list') }}" aria-expanded="false">
-                                <i class="fa fa-cart-shopping"></i>
-                                <span class="badge badge-danger navbar-badge cart-number">{{ \App\Models\e_commerce\checkout::query()
-                                    ->where('user_id', auth()->id())
-                                    ->where('status', 1)->count() }}</span>
-                            </a>
-                        </div>
-
-                    @endif
+                        @if (auth()->user() != null)
+                            <div class="order-cart">
+                                <a href="{{ route('package.cart_list') }}" aria-expanded="false">
+                                    <i class="fa fa-cart-shopping"></i>
+                                    <span
+                                        class="badge badge-danger navbar-badge cart-number">{{ \App\Models\e_commerce\checkout::query()->where('user_id', auth()->id())->where('status', 1)->count() }}</span>
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

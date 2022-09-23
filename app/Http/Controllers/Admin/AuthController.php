@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Models\About;
 use App\Models\setting\district;
 use App\Models\setting\municipality;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,7 +21,7 @@ class AuthController extends Controller
             'users' => User::query()
                 ->where('role', config('constant.ROLE.1'))
                 ->latest()
-                ->get()
+                ->get(),
         ]);
     }
 
@@ -30,7 +32,11 @@ class AuthController extends Controller
 
     public function register(): View
     {
-        return view('e_commerce.frontend.register');
+        $about = About::all();
+
+        return view('e_commerce.frontend.register', [
+            'about' => $about
+        ]);
     }
 
     public function registerSubmit(UserRequest $request): RedirectResponse
@@ -46,8 +52,8 @@ class AuthController extends Controller
             $data['districts'] = district::query()->where('pid', request('pid'))->get();
         } elseif (request('type') == 'district') {
             $data['municipalities'] = municipality::query()->where('did', request('did'))->get();
-        }elseif(request('type') == "ward"){
-            $data['wards'] = municipality::query()->where('id',request('municipality_id'))->first();
+        } elseif (request('type') == "ward") {
+            $data['wards'] = municipality::query()->where('id', request('municipality_id'))->first();
         }
 
         return response()->json($data);

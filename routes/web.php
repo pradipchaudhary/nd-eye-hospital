@@ -105,7 +105,7 @@ Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/subgallery/{id}', [FrontendController::class, 'subGallery'])->name('sub-gallery');
 
 
-Route::prefix('admin')->middleware(['auth','IsAdmin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'IsAdmin'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     // Route::get('logout', [HomeController::class, 'logout'])->name('logout');

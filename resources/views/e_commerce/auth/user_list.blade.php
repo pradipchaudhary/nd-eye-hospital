@@ -42,11 +42,11 @@
                             <tbody>
                                 @foreach ($users as $key => $user)
                                     <tr>
-                                        <td class="text-center">{{$key+1}}</td>
-                                        <td class="text-center">{{$user->name}}</td>
-                                        <td class="text-center">{{$user->email}}</td>
-                                        <td class="text-center">{{$user->contact_no}}</td>
-                                        <td class="text-center">{{$user->address}}</td>
+                                        <td class="text-center">{{ $key + 1 }}</td>
+                                        <td class="text-center">{{ $user->name }}</td>
+                                        <td class="text-center">{{ $user->email }}</td>
+                                        <td class="text-center">{{ $user->contact_no }}</td>
+                                        <td class="text-center">{{ $user->address }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
