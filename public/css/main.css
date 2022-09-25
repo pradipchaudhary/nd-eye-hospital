@@ -2844,6 +2844,9 @@ footer .foo h4 {
     }
 }
 @media all and (max-width: 728px) {
+    #top_wrap .account {
+        text-align: left;
+    }
     .shopping-cart {
         display: flex;
         justify-content: space-between;
@@ -2858,6 +2861,13 @@ footer .foo h4 {
     }
 }
 @media all and (max-width: 320px) {
+    #top_wrap .account {
+        text-align: left;
+    }
+    .book_appointment::after {
+        background: none;
+        background-size: 108%;
+    }
     .shopping-cart {
         display: flex;
         justify-content: space-between;
@@ -2953,7 +2963,7 @@ span.cart-number {
 }
 .register-form input,
 .register-form select {
-    padding: 4px 6px;
+    padding: 7px;
     border: 1px solid #e8e9eb;
     font-size: 0.8rem;
     border-radius: 0px;
@@ -2982,7 +2992,7 @@ span.cart-number {
 }
 .login-form input,
 .login-form select {
-    padding: 6px 6px;
+    padding: 8px;
     border: 1px solid #e8e9eb;
     font-size: 0.8rem;
     border-radius: 0px;
@@ -3007,6 +3017,7 @@ span.cart-number {
 .login-form button.login {
     display: block;
     width: 100%;
+    margin-top: 30px;
 }
 .login-form .forget {
     text-align: center;
@@ -3017,4 +3028,120 @@ span.cart-number {
     /* display: block; */
     text-align: left;
     font-size: 0.8rem;
+}
+
+/* === my package list === */
+.nd-package-list .our_package {
+    /* background-color: red; */
+    border: 1px solid #eee;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+.nd-package-list table thead {
+    /* background-color: #eee; */
+    color: #686cff;
+}
+.nd-package-list table thead tr th {
+    padding: 0.6rem;
+    border-bottom: 1px solid #686cff;
+}
+.nd-package-list table tbody tr td {
+    padding: 0.8rem 0.6rem;
+    border-bottom: 1px solid #dbdbdb;
+    font-size: 0.9rem;
+}
+.nd-package-list table tbody tr:last-child td {
+    border-bottom: none !important;
+    color: #686cff;
+    padding: 2rem 0.6rem;
+}
+.nd-package-list table thead tr th:last-child,
+.nd-package-list table tbody tr td:last-child {
+    text-align: center;
+}
+
+/* Package order form  */
+.nd-package-order-form .same-as label {
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.nd-package-order-form input:hover,
+.nd-package-order-form select:hover,
+.nd-package-order-form input:focus,
+.nd-package-order-form select:focus {
+    outline: none;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: none;
+}
+
+/* === Card list === */
+.nd-card-list .package_order_detail {
+    border: 1px solid #eee;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+.nd-card-list table thead {
+    color: #686cff;
+}
+.nd-card-list table thead tr th {
+    padding: 0.6rem;
+    border-bottom: 1px solid #686cff;
+}
+.nd-card-list table tbody tr td {
+    padding: 0.8rem 0.6rem;
+    border-bottom: 1px solid #dbdbdb;
+    font-size: 0.9rem;
+}
+.nd-card-list table tbody tr:last-child td {
+    border-bottom: none !important;
+    color: #686cff;
+    padding: 2rem 0.6rem;
+}
+.nd-card-list table thead tr th:last-child,
+.nd-card-list table tbody tr td:last-child {
+    text-align: center;
+}
+.nd-card-list table tbody tr td:last-child {
+    padding-left: 40px;
+}
+
+.nd-card-list table tbody tr td button.btn {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.nd-card-list .checkout-btn {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+/* popup */
+.nd-card-list .modal-body table thead {
+    background-color: transparent;
+}
+.nd-card-list .modal-body table thead tr th {
+    padding: 0.6rem;
+}
+.nd-card-list .modal-body table tbody tr td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #eee;
+}
+.nd-card-list .modal-body table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+.nd-card-list .modal-header button {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
 }

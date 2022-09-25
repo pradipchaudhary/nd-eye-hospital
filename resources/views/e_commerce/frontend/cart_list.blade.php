@@ -19,24 +19,25 @@
     </div>
 </div>
 
-<div class="sec_page_body py-5">
+<div class="sec_page_body nd-card-list py-5">
     <div class="container">
         <div class="row">
-            {{-- <h2> Our Package</h2> --}}
+            <h4> Shopping Cart</h4>
         </div>
         <div class="row mt-4 package_order_detail">
             <table>
-                <tr>
-                    <th>Name </th>
-                    <th>Package </th>
-                    <th>Package Detail </th>
-                    <th>Price </th>
-                    <th>Action </th>
-                </tr>
-                @php
-                    $total = 0;
-                @endphp
-                @foreach ($cart as $c)
+                <thead>
+                    <tr>
+                        <th>Name </th>
+                        <th>Package </th>
+                        <th>Package Detail </th>
+                        <th>Price </th>
+                        <th>Action </th>
+                    </tr>
+                </thead>
+                <tbody @php
+$total = 0; @endphp
+                    @foreach ($cart as $c)
                     <tr>
                         <td>
                             {{ $c->name }}
@@ -61,18 +62,16 @@
                     </tr>
                     @php
                         $total += $c->package_detail->price;
-                    @endphp
-                @endforeach
-                <tr>
+                    @endphp @endforeach
+                    <tr>
                     <td colspan="3" class="text-end"><b> Total </b></td>
                     <td><b> ${{ $total }}</b></td>
-                </tr>
+                    </tr>
+                </tbody>
             </table>
-            {{-- <form action="{{ route('package.checkout_submit') }}"
-                onsubmit="if(confirm('Are you sure?')){ return true} else {return false}">
-                <button type="button" class="btn btn-sm btn-primary">Checkout</button>
-            </form> --}}
-            <button type="button" class="btn btn-sm btn-primary" onclick="openModal()">Checkout</button>
+            <div class="checkout-btn">
+                <button type="button" class="btn btn-primary" onclick="openModal()">Checkout</button>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog"
@@ -80,47 +79,50 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Check Out</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Check Out List</h5>
                             <button type="button" onclick="closeModal()" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <table style="width: 100%">
-                                <tr>
-                                    <th>Name </th>
-                                    <th>Package </th>
-                                    <th>Package Detail </th>
-                                    <th>Price </th>
-
-                                </tr>
-                                @php
-                                    $total = 0;
-                                @endphp
-                                @foreach ($cart as $c)
+                                <thead>
                                     <tr>
-                                        <td>
-                                            {{ $c->name }}
-                                        </td>
-                                        <td>
-                                            {{ $c->package_detail->package->name }}
-                                        </td>
-                                        <td>
-                                            {{ $c->package_detail->name }}
-                                        </td>
-                                        <td>
-                                            $ {{ $c->package_detail->price }}
-                                        </td>
-
+                                        <th>Name </th>
+                                        <th>Package </th>
+                                        <th>Package Detail </th>
+                                        <th>Price </th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @php
-                                        $total += $c->package_detail->price;
+                                        $total = 0;
                                     @endphp
-                                @endforeach
-                                <tr>
-                                    <td colspan="3" class="text-end"><b> Total </b></td>
-                                    <td><b> ${{ $total }}</b></td>
-                                </tr>
+                                    @foreach ($cart as $c)
+                                        <tr>
+                                            <td>
+                                                {{ $c->name }}
+                                            </td>
+                                            <td>
+                                                {{ $c->package_detail->package->name }}
+                                            </td>
+                                            <td>
+                                                {{ $c->package_detail->name }}
+                                            </td>
+                                            <td>
+                                                $ {{ $c->package_detail->price }}
+                                            </td>
+
+                                        </tr>
+                                        @php
+                                            $total += $c->package_detail->price;
+                                        @endphp
+                                    @endforeach
+                                    <tr>
+                                        <td colspan="3" class="text-end"><b> Total </b></td>
+                                        <td><b> ${{ $total }}</b></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div class="modal-footer">
@@ -166,7 +168,6 @@
     </div>
 </div>
 <script>
-
     async function transaction_submit() {
         var form = document.getElementById('transaction_submit');
         var inputs = form.getElementsByTagName("input");

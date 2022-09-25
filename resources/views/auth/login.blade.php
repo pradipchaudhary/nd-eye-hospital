@@ -37,7 +37,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group mt-4">
                                     <label for="password">{{ __('Password') }}</label>
                                     <input id="password" type="password"
@@ -50,21 +49,14 @@
                                         </span>
                                     @enderror
                                 </div>
-
-
-
                                 <div class="mt-3">
                                     <button class="btn login btn-primary btn-block"
                                         type="submit">{{ __('Login') }}</button>
-
                                 </div>
-
                                 <div class="forget">
-
                                     <a class="" href="{{ url('user/register') }}">
                                         {{ __('Or register?') }}
                                     </a>
-
                                     @if (Route::has('password.request'))
                                         <a class="" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
@@ -73,11 +65,8 @@
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

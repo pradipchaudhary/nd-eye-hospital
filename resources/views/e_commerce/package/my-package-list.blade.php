@@ -19,23 +19,24 @@
     </div>
 </div>
 
-<div class="sec_page_body py-5">
+<div class="sec_page_body nd-package-list py-5">
     <div class="container">
         <div class="row">
-            {{-- <h2> Our Package</h2> --}}
+            <h4> Our Package</h4>
         </div>
         <div class="row mt-4 our_package">
             <table>
-                <tr>
-                    <th>Name </th>
-                    <th>Package  </th>
-                    <th>Package Detail </th>
-                    <th>Price </th>
-                </tr>
-                @php
-                    $total = 0;
-                @endphp
-                @foreach ($cart as $c)
+                <thead>
+                    <tr>
+                        <th>Name </th>
+                        <th>Package </th>
+                        <th>Package Detail </th>
+                        <th>Price </th>
+                    </tr>
+                </thead>
+                <tbody @php
+$total = 0; @endphp
+                    @foreach ($cart as $c)
                     <tr>
                         <td>
                             {{ $c->name }}
@@ -52,12 +53,12 @@
                     </tr>
                     @php
                         $total += $c->package_detail->price;
-                    @endphp
-                @endforeach
-                <tr>
+                    @endphp @endforeach
+                    <tr>
                     <td colspan="3" class="text-end"><b> Total </b></td>
                     <td><b> ${{ $total }}</b></td>
-                </tr>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'ND') }}</title> --}}
-    <title> @yield('title') </title>
+    {{-- <title> @yield('title') </title> --}}
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -52,7 +52,7 @@
             </div>
 
 
-            <div class="sec_page_body py-5" id="vue_page">
+            <div class="sec_page_body nd-package-order-form py-5" id="vue_page">
                 <div class="container">
                     <div class="row">
                         {{-- <h2> Our Package</h2> --}}
@@ -63,7 +63,8 @@
                             <div class="order-cart">
                                 <a href="{{ route('package.cart_list') }}" aria-expanded="false">
                                     <i class="fa fa-cart-shopping"></i>
-                                    <span class="badge badge-danger navbar-badge cart-number">{{ $cart->count() }}</span>
+                                    <span
+                                        class="badge badge-danger navbar-badge cart-number">{{ $cart->count() }}</span>
                                 </a>
                             </div>
                         @endif
@@ -84,16 +85,15 @@
                                 action="{{ route('package.checkout', $package_detail->token) }}" method="POST">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-12 same-as">
                                         <input type="hidden" name="token" value="{{ $package_detail->token }}">
                                         <div class="form-group my-2">
+                                            <input type="checkbox" name="is_register" v-model="checked"
+                                                v-on:click="fillTheForm()" id="is_register">
                                             <label for="name">{{ __('Same as register detail') }}</label>
-                                            <input type="checkbox" name="is_register" v-model="checked" class="p-2 mx-2"
-                                                style="width: 20px; height:20px;" v-on:click="fillTheForm()"
-                                                id="is_register">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="name">{{ __('Name') }}</label>
                                             <input type="text"
@@ -107,7 +107,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="email" name="email">{{ __('Email Address') }}</label>
                                             <input type="email"
@@ -121,7 +121,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="age">{{ __('Age') }}</label>
                                             <input type="number"
@@ -136,9 +136,9 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="sex">{{ __('sex') }}</label>
+                                            <label for="sex">{{ __('Sex') }}</label>
                                             <select name="sex" id="sex"
                                                 class="form-control @error('sex') is-invalid @enderror"
                                                 v-model="form_data.sex">
@@ -153,7 +153,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="contact_no">{{ __('Contact no') }}</label>
                                             <input type="text"
@@ -168,7 +168,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="country">{{ __('Country') }}</label>
                                             <select name="country" id="country"
@@ -179,7 +179,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group" id="province_block">
                                             <label for="province">{{ __('Province') }}</label>
                                             <select name="province" id="province"
@@ -191,7 +191,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group" id="district_block">
                                             <label for="district">{{ __('Districts') }}</label>
                                             <select name="district" id="district"
@@ -203,7 +203,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group" id="municipality_block">
                                             <label for="municipality">{{ __('Municipality') }}</label>
                                             <select name="municipality" id="municipality"
@@ -216,7 +216,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group" id="ward_block">
                                             <label for="ward">{{ __('Ward') }}</label>
                                             <select name="ward" id="ward"
@@ -228,7 +228,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="patient_type">{{ __('Patient Type') }}</label>
                                             <select name="patient_type" id="patient_type"
@@ -240,7 +240,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group" id="address_block" style="display: none;">
                                             <label for="address">{{ __('Address') }}</label>
                                             <input type="text"
