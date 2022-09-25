@@ -32,7 +32,7 @@
                         <th>Package </th>
                         <th>Package Detail </th>
                         <th>Price </th>
-                        <th>Action </th>
+                        <th style="text-align: left">Action </th>
                     </tr>
                 </thead>
                 <tbody @php
@@ -65,7 +65,7 @@ $total = 0; @endphp
                     @endphp @endforeach
                     <tr>
                     <td colspan="3" class="text-end"><b> Total </b></td>
-                    <td><b> ${{ $total }}</b></td>
+                    <td style="text-align: left"><b> ${{ $total }}</b></td>
                     </tr>
                 </tbody>
             </table>

@@ -36,8 +36,13 @@
                 </div>
                 <div class="col-md-6 account">
                     <ul>
-                        <li> <span class="user-icon"> <i class="fa-solid fa-user"></i> </span> My Account <span
-                                class="dropdown-arrow"> <i class="fa-solid fa-angle-down"></i></span>
+                        <li> <span class="user-icon"> <i class="fa-solid fa-user"></i> </span>
+                            @if (auth()->user() == null)
+                                My Account
+                            @else
+                                {{ auth()->user()->name }}
+                            @endif <span class="dropdown-arrow"> <i
+                                    class="fa-solid fa-angle-down"></i></span>
                             <ul>
                                 @if (auth()->user() == null)
                                     <li><a href="{{ route('login') }}"> Login </a></li>

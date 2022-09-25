@@ -59,7 +59,11 @@ $total = 0; @endphp
                     <td><b> ${{ $total }}</b></td>
                     </tr>
                 </tbody>
+
             </table>
+            <div class="checkout-btn">
+                <button class="btn btn-primary"> Check Out</button>
+            </div>
         </div>
     </div>
 </div>

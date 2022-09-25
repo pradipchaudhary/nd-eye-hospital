@@ -213,6 +213,7 @@ ul.social_link li.whatsapp {
     cursor: pointer;
 }
 #top_wrap .account ul li {
+    display: inline-block;
     padding: 0.4rem;
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -3059,6 +3060,13 @@ span.cart-number {
 .nd-package-list table tbody tr td:last-child {
     text-align: center;
 }
+.nd-package-list .checkout-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+.nd-package-list .checkout-btn button.btn {
+    border-radius: 0px;
+}
 
 /* Package order form  */
 .nd-package-order-form .same-as label {
@@ -3097,14 +3105,14 @@ span.cart-number {
 .nd-card-list table tbody tr:last-child td {
     border-bottom: none !important;
     color: #686cff;
-    padding: 2rem 0.6rem;
+    padding: 2rem 0.4rem;
 }
 .nd-card-list table thead tr th:last-child,
 .nd-card-list table tbody tr td:last-child {
     text-align: center;
 }
 .nd-card-list table tbody tr td:last-child {
-    padding-left: 40px;
+    padding-left: 10px;
 }
 
 .nd-card-list table tbody tr td button.btn {
