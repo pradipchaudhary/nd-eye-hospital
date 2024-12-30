@@ -49,6 +49,10 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Contributing
 
+#Demo Links 
+- https://optico-demo.pbminfotech.com/elementor-demo2/
+- 
+
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## Code of Conduct
